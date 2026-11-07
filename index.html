@@ -60,6 +60,10 @@
   .doc .n{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--clay);font-weight:500;flex:none;width:26px}
   .doc .m{flex:1;min-width:0} .doc .m .tt{font-family:Fraunces,Georgia,serif;font-size:18px;font-weight:460;line-height:1.15}
   .doc .m .dd{font-size:12.5px;color:var(--faint);margin-top:3px} .doc .arw{color:var(--faint);font-size:18px}
+  .qrs{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .qrcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 16px 18px;text-align:center;box-shadow:0 1px 1px rgba(36,31,26,.04),0 10px 22px -16px rgba(36,31,26,.3)}
+  .qrcard img{width:100%;max-width:156px;background:#fff;border-radius:10px;display:block;margin:0 auto 10px}
+  .qrcard .qt{font:600 14px Inter} .qrcard .qs{font-size:11.5px;color:var(--faint);margin-top:2px}
   .foot{margin-top:60px;font-size:13px;color:var(--faint);line-height:1.6;text-align:center}
   .foot b{color:var(--clay);font-weight:600}
   /* copilot */
@@ -166,6 +170,18 @@
         <a class="doc" href="dossier/04_especificaciones_tecnicas.pdf" target="_blank" rel="noopener"><span class="n">04</span><span class="m"><span class="tt">Especificaciones técnicas</span><span class="dd">Arquitectura, κ y privacidad</span></span><span class="arw">↗</span></a>
         <a class="doc" href="dossier/05_anexo_de_evidencias.pdf" target="_blank" rel="noopener"><span class="n">05</span><span class="m"><span class="tt">Anexo de evidencias</span><span class="dd">Necesidad, avales y obra registrada</span></span><span class="arw">↗</span></a>
         <a class="doc" href="preguntas.html"><span class="n">Q&amp;A</span><span class="m"><span class="tt">Preguntas y respuestas</span><span class="dd">15 preguntas del jurado</span></span><span class="arw">→</span></a>
+      </div>
+    </section>
+
+    <!-- QR para escanear desde la pantalla -->
+    <section class="section">
+      <p class="seclabel">Escanéalos desde la pantalla</p>
+      <h2 class="sectitle serif">Llévatelo en el <em>móvil.</em></h2>
+      <div class="qrs">
+        <div class="qrcard"><img src="qr/web.png" alt="QR a la web del proyecto"><div class="qt">La web</div><div class="qs">todo el proyecto</div></div>
+        <div class="qrcard"><img src="qr/app.png" alt="QR a la app EMMA"><div class="qt">La app EMMA</div><div class="qs">pruébala</div></div>
+        <div class="qrcard"><img src="qr/deck.png" alt="QR al deck narrado"><div class="qt">Deck narrado</div><div class="qs">con voz</div></div>
+        <div class="qrcard"><img src="qr/variable.png" alt="QR a la variable, el impacto"><div class="qt">La variable</div><div class="qs">el impacto</div></div>
       </div>
     </section>
 

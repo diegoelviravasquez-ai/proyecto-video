@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="es" data-tema="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EMMA · Preguntas y respuestas</title>
+<style>
+  :root{
+    --bg:#faf7f2; --surface:#fff; --panel:#f3efe8; --ink:#241f1a; --soft:#574f45; --faint:#7a7065;
+    --line:rgba(60,40,20,.13); --line-soft:rgba(60,40,20,.07);
+    --accent:#c0562a; --accent-soft:rgba(192,86,42,.10);
+    --auto:#1f7a6b; --auto-soft:rgba(31,122,107,.12);
+    --tierra:#9a6611;
+    --fs:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+    --serif:"Iowan Old Style","Palatino",Georgia,"Times New Roman",serif;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-tema="light"]){
+    --bg:#121110; --surface:#1d1a16; --panel:#242019; --ink:#f3ede4; --soft:#cbc1b4; --faint:#9c9284;
+    --line:rgba(255,255,255,.13); --line-soft:rgba(255,255,255,.06);
+    --accent:#e8824f; --accent-soft:rgba(232,130,79,.15);
+    --auto:#3fb89f; --auto-soft:rgba(63,184,159,.16); --tierra:#e0a53f;
+    color-scheme:dark;
+  }}
+  :root[data-tema="dark"]{
+    --bg:#121110; --surface:#1d1a16; --panel:#242019; --ink:#f3ede4; --soft:#cbc1b4; --faint:#9c9284;
+    --line:rgba(255,255,255,.13); --line-soft:rgba(255,255,255,.06);
+    --accent:#e8824f; --accent-soft:rgba(232,130,79,.15);
+    --auto:#3fb89f; --auto-soft:rgba(63,184,159,.16); --tierra:#e0a53f;
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--bg);color:var(--ink);font:18px/1.6 var(--fs);-webkit-font-smoothing:antialiased;
+    padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .wrap{max-width:780px;margin:0 auto;padding:30px 4px 90px}
+  .glifo{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .tgl{position:fixed;top:14px;right:14px;z-index:9;background:var(--surface);border:1px solid var(--line);color:var(--soft);width:42px;height:42px;border-radius:12px;cursor:pointer;display:grid;place-items:center}
+  .tgl:focus-visible{outline:3px solid var(--auto);outline-offset:2px} .tgl .glifo{width:20px;height:20px}
+  .hero{padding:44px 0 26px;border-bottom:1px solid var(--line)}
+  .kick{font:700 12px var(--fs);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  h1{font:600 clamp(32px,7vw,52px)/1.05 var(--serif);letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance}
+  .sub{font:300 clamp(18px,3vw,22px)/1.45 var(--fs);color:var(--soft);max-width:46ch;margin:0}
+  .role-note{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:24px 0 0;font-size:15px;color:var(--soft)}
+  .role-note b{color:var(--ink)}
+  section{padding:34px 0;border-bottom:1px solid var(--line)}
+  .seclabel{font:700 12px var(--fs);letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 6px}
+  h2{font:600 clamp(22px,4.5vw,30px)/1.14 var(--serif);margin:0 0 20px}
+  .qa{scroll-margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:0 0 14px}
+  .qa .q{display:flex;gap:12px;align-items:baseline;margin:0 0 10px}
+  .qa .marker{font:700 14px var(--fs);color:var(--accent);flex:none;font-variant-numeric:tabular-nums}
+  .qa h3{font:600 20px/1.3 var(--serif);margin:0;letter-spacing:-.01em}
+  .qa p{font-size:16px;line-height:1.62;color:var(--soft);margin:0 0 12px}
+  .qa p:last-child{margin-bottom:0}
+  .qa .a{padding-left:26px;border-left:2px solid var(--auto-soft)}
+  .qa em{color:var(--ink);font-style:italic}
+  .clave{display:inline-flex;gap:7px;align-items:center;margin:12px 0 0 26px;font:600 12.5px var(--fs);letter-spacing:.02em;
+    background:var(--auto-soft);color:var(--auto);border-radius:999px;padding:6px 13px}
+  .clave svg{width:13px;height:13px}
+  .foot{text-align:center;color:var(--faint);font-size:14px;margin-top:40px;line-height:1.7}
+  .foot b{color:var(--soft)}
+  @media print{.tgl{display:none} .qa{break-inside:avoid}}
+</style>
+</head>
+<body>
+<button class="tgl" id="tgl" aria-label="Cambiar entre modo claro y oscuro"><svg class="glifo" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg></button>
+<div class="wrap">
+  <header class="hero">
+    <p class="kick">EMMA · Método SAC — defensa ante el jurado</p>
+    <h1>Preguntas y respuestas.</h1>
+    <p class="sub">Las preguntas que es probable que haga el jurado de Hack4Edu, con una respuesta breve y lista para decir en voz alta. Ordenadas por tema.</p>
+    <div class="role-note"><b>Cómo usarlo:</b> una respuesta = dos o tres frases. Si solo recuerdas una, que sea la etiqueta <b>clave</b> en jade. Guardarraíles intactos: «elijo, no invento» · «no prometo el milagro» · a Conderana solo se le atribuye la pregunta · no ataca al DUA ni a ProFuturo.</div>
+  </header>
+
+  <section>
+    <p class="seclabel">1 · Producto y diferenciación</p>
+    <h2>Qué es y en qué se distingue.</h2>
+
+    <div class="qa" id="Q1">
+      <div class="q"><span class="marker">Q1</span><h3>¿Qué es EMMA en una frase?</h3></div>
+      <div class="a">
+        <p><b>EMMA</b> —<em>Extended Mind Measured Acoustically</em>— es un instrumento que escucha al niño leer, mide su comprensión de forma demostrable y se retira cuando ya aprende solo; sin conexión y partiendo de su propia cultura. Es el instrumento aplicado del método <b>SAC</b> (Sistema de Aprendizaje Circunstancial).</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Instrumento de medida, no una app más.</span>
+    </div>
+
+    <div class="qa" id="Q2">
+      <div class="q"><span class="marker">Q2</span><h3>¿En qué se diferencia de repartir tabletas o de otra edtech?</h3></div>
+      <div class="a">
+        <p>No mide el <em>despliegue</em> —dispositivos, horas, clics—, mide la brecha entre desplegar y que alguien de verdad aprenda. No genera contenido: <em>elige de un banco validado</em>. Y está diseñada para <em>volverse innecesaria</em> (pedagogía negativa), no para maximizar el enganche.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Mide el aprendizaje, no el despliegue.</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="seclabel">2 · Cómo funciona</p>
+    <h2>La técnica, en claro.</h2>
+
+    <div class="qa" id="Q3">
+      <div class="q"><span class="marker">Q3</span><h3>¿Cómo medís el aprendizaje «de verdad»?</h3></div>
+      <div class="a">
+        <p>Con <b>comprensión demostrable</b>: el niño debe <em>reformular, transferir, objetar y reconocer sus límites</em> (al menos 3 de 4). Y con la <b>huella de lectura</b> —su prosodia: ritmo, cadencia de las vocales, melodía— para localizar dónde empieza a resbalar la comprensión. No la damos por supuesta.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>No lo que dice: cómo lo dice.</span>
+    </div>
+
+    <div class="qa" id="Q4">
+      <div class="q"><span class="marker">Q4</span><h3>¿Qué es el coeficiente κ?</h3></div>
+      <div class="a">
+        <p>Una medida del <b>acoplamiento</b> humano–IA: distingue si la herramienta <em>amplía</em> la cognición del niño o la <em>sustituye</em>. Hoy está formulado y demostrado matemáticamente; su validación empírica forma parte de la hoja de ruta (experimento preregistrado).</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Ampliar, no sustituir.</span>
+    </div>
+
+    <div class="qa" id="Q5">
+      <div class="q"><span class="marker">Q5</span><h3>¿Funciona de verdad sin conexión?</h3></div>
+      <div class="a">
+        <p>Sí. <b>Cuatro ceros</b>: cero nube, cero cuenta, cero datos fuera, cero modelo oculto. El cerebro es local, así que no necesita red — y por eso es viable en entornos con recursos limitados.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Local de verdad: los cuatro ceros.</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="seclabel">3 · Ética y privacidad</p>
+    <h2>Lo que más mira un jurado responsable.</h2>
+
+    <div class="qa" id="Q6">
+      <div class="q"><span class="marker">Q6</span><h3>¿No estáis infiriendo emociones del niño?</h3></div>
+      <div class="a">
+        <p>No. El <b>ánimo lo declara el propio niño</b> (autoinforme); EMMA no infiere estados emocionales. Es coherente con el art. 5.1.f del Reglamento de IA de la UE, que prohíbe el reconocimiento de emociones en el aula.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>El ánimo lo dice el niño, no la máquina.</span>
+    </div>
+
+    <div class="qa" id="Q7">
+      <div class="q"><span class="marker">Q7</span><h3>¿Qué pasa con los datos de un menor?</h3></div>
+      <div class="a">
+        <p>No salen del dispositivo. Los cuatro ceros garantizan que no hay recogida ni envío de datos personales: todo el procesamiento es <em>local</em>. No hay cuenta que crear ni perfil que almacenar.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Nada sale del dispositivo.</span>
+    </div>
+
+    <div class="qa" id="Q8">
+      <div class="q"><span class="marker">Q8</span><h3>¿Qué significa «elige, no genera»?</h3></div>
+      <div class="a">
+        <p>EMMA no produce texto libre: <em>selecciona</em> de un banco de recursos validado. Así se evita la alucinación del modelo y se mantiene el control pedagógico de lo que el niño recibe.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Selecciona de un banco validado.</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="seclabel">4 · Pedagogía y rol docente</p>
+    <h2>El maestro no pierde; recupera.</h2>
+
+    <div class="qa" id="Q9">
+      <div class="q"><span class="marker">Q9</span><h3>¿Esto no sustituye al maestro?</h3></div>
+      <div class="a">
+        <p>Al contrario: le <b>devuelve el juicio</b>. Le propone una <em>hipótesis de barrera</em> —dónde está el obstáculo, nunca «quién es el culpable»— y le pide su criterio <em>antes</em> de ver la sugerencia (<b>juicio ciego</b>). El maestro decide.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Hipótesis de barrera + juicio ciego.</span>
+    </div>
+
+    <div class="qa" id="Q10">
+      <div class="q"><span class="marker">Q10</span><h3>¿Qué es la «pedagogía negativa»?</h3></div>
+      <div class="a">
+        <p>El andamiaje <em>se retira</em> cuando el niño pedalea solo. EMMA se mide por cuánto <em>menos</em> la necesitan, no por cuánto los retiene. Es, con permiso, «la única inteligencia artificial con la decencia de volverse innecesaria».</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Los ruedines se quitan.</span>
+    </div>
+
+    <div class="qa" id="Q11">
+      <div class="q"><span class="marker">Q11</span><h3>¿Esto ataca o compite con el DUA?</h3></div>
+      <div class="a">
+        <p>No. EMMA <b>pone el DUA en práctica</b>: parte de la circunstancia de cada niño —su lengua, su ritmo, su foco— para hacer accesible el aprendizaje y, además, <em>demostrarlo</em>. Es el DUA con un instrumento de medida.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Pone el DUA en práctica.</span>
+    </div>
+  </section>
+
+  <section>
+    <p class="seclabel">5 · Evidencia, mercado y límites</p>
+    <h2>Lo que prometemos — y lo que no.</h2>
+
+    <div class="qa" id="Q12">
+      <div class="q"><span class="marker">Q12</span><h3>¿Qué evidencia tenéis de que funciona?</h3></div>
+      <div class="a">
+        <p>EMMA es un <b>instrumento de medida</b> del aprendizaje demostrable, no una prueba de eficacia. Mide si los recursos y las intervenciones se traducen en impacto real. Cuenta con el <b>aval académico de David Doncel</b> (Universidad de Salamanca). La validación causal corresponde a un experimento preregistrado.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Instrumento de medida, no prueba de eficacia.</span>
+    </div>
+
+    <div class="qa" id="Q13">
+      <div class="q"><span class="marker">Q13</span><h3>¿Es viable? ¿Escala?</h3></div>
+      <div class="a">
+        <p>Al funcionar en local y partir de la cultura del niño, escala en contextos vulnerables <em>sin coste de nube</em>. Oaxaca es el piloto; el modelo se apoya en figuras fiscales ligeras y en la transferencia a instituciones, no en un gasto recurrente por aula.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>Sin coste de nube: escala donde más falta.</span>
+    </div>
+
+    <div class="qa" id="Q14">
+      <div class="q"><span class="marker">Q14</span><h3>¿Por qué «Extended Mind», por qué la voz?</h3></div>
+      <div class="a">
+        <p>Porque la inteligencia nunca estuvo solo en la cabeza: se piensa con la cultura. EMMA no fabrica una mente, <em>mide y extiende</em> la que ya existe. Y lo hace por la voz porque la comprensión deja huella en <em>cómo</em> se lee, no solo en lo que se responde.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>No inyecta inteligencia: mide la que ya hay.</span>
+    </div>
+
+    <div class="qa" id="Q15">
+      <div class="q"><span class="marker">Q15</span><h3>¿Cuál es el límite honesto del proyecto?</h3></div>
+      <div class="a">
+        <p>No promete el milagro: dice si la tarea <em>se comprendió</em>, no si el mundo cambió. Ofrece algo más raro y más útil —una manera de <em>saber</em> si el aprendizaje, esta vez, ocurrió—.</p>
+      </div>
+      <span class="clave"><svg class="glifo" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>No el milagro: saber si ocurrió.</span>
+    </div>
+  </section>
+
+  <p class="foot"><b>EMMA · Proyecto Guelaguetza</b> — Territorio · Conocimiento · Desarrollo<br>Hack4Edu 2026 · ProFuturo × Universidad Pontificia de Salamanca</p>
+</div>
+<script>
+  (function(){
+    var r=document.documentElement, b=document.getElementById('tgl');
+    b.addEventListener('click',function(){
+      var cur=r.getAttribute('data-tema');
+      var dark=cur==='dark'||(cur==='auto'&&matchMedia('(prefers-color-scheme:dark)').matches);
+      r.setAttribute('data-tema',dark?'light':'dark');
+    });
+  })();
+</script>
+</body>
+</html>

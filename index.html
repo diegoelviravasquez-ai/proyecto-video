@@ -4,55 +4,114 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EMMA · Proyecto Guelaguetza</title>
-<meta name="description" content="EMMA — Sistema de Aprendizaje Circunstancial. Vídeo de presentación y deck narrado.">
+<meta name="description" content="EMMA — Sistema de Aprendizaje Circunstancial. Vídeo, deck narrado, dossier y copiloto de la defensa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--paper:#faf7f2;--paper2:#f2ebe0;--ink:#241f1a;--clay:#c0562a;--jade:#1f7a6b;--ochre:#c69a45}
+  :root{--paper:#faf7f2;--paper2:#f2ebe0;--surface:#fff;--ink:#241f1a;--soft:#574f45;--faint:#8a8075;
+    --line:rgba(60,40,20,.12);--clay:#c0562a;--jade:#1f7a6b;--ochre:#c69a45;
+    --clay-soft:rgba(192,86,42,.1);--jade-soft:rgba(31,122,107,.1)}
   *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
   html,body{background:var(--paper2)}
   body{font-family:Inter,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
-    min-height:100vh;display:flex;flex-direction:column;align-items:center;
-    padding:48px max(18px,env(safe-area-inset-left,0)) 60px;position:relative;
-    background:radial-gradient(60% 40% at 15% 4%,rgba(198,154,69,.16),transparent 70%),radial-gradient(55% 45% at 95% 100%,rgba(192,86,42,.1),transparent 70%),var(--paper)}
+    padding:0 max(18px,env(safe-area-inset-left,0));position:relative;
+    background:radial-gradient(60% 34% at 15% 2%,rgba(198,154,69,.16),transparent 70%),radial-gradient(55% 40% at 97% 100%,rgba(192,86,42,.09),transparent 70%),var(--paper)}
   .serif{font-family:Fraunces,Georgia,serif}
-  .wrap{width:100%;max-width:940px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .wrap{width:100%;max-width:960px;margin:0 auto;padding:52px 0 72px}
+  /* hero */
   .mark{display:flex;align-items:center;gap:10px;justify-content:center}
   .mark b{font:600 11px Inter;letter-spacing:.22em;text-transform:uppercase;color:rgba(36,31,26,.8)}
   .mark .sep{width:1px;height:12px;background:rgba(36,31,26,.25)}
   .mark span{font-size:11px;color:rgba(36,31,26,.55)}
-  .kick{font:600 11px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin:20px 0 10px}
-  h1{font-size:clamp(34px,6vw,56px);line-height:1;letter-spacing:-.03em;font-weight:360}
+  .center{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .kick{font:600 11px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin:22px 0 10px}
+  h1{font-size:clamp(36px,6.5vw,60px);line-height:1;letter-spacing:-.03em;font-weight:360}
   h1 em{font-style:italic;color:var(--clay)}
-  .lede{font-size:clamp(15px,2.4vw,18px);line-height:1.5;color:rgba(36,31,26,.66);max-width:48ch;margin:14px auto 0;font-weight:300}
-  .videobox{width:100%;margin:36px 0 8px;border-radius:22px;overflow:hidden;background:#000;
+  .lede{font-size:clamp(15px,2.3vw,18px);line-height:1.5;color:var(--soft);max-width:50ch;margin:14px auto 0;font-weight:300}
+  .videobox{width:100%;margin:36px 0 10px;border-radius:22px;overflow:hidden;background:#000;
     box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 30px 70px -28px rgba(36,31,26,.5),0 0 0 1px rgba(36,31,26,.08)}
   video{width:100%;display:block;aspect-ratio:16/9;background:#000}
-  .cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px}
-  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:16px 30px;font:600 16px Inter;text-decoration:none;transition:transform .12s ease}
+  /* launcher / controller */
+  .controller{margin:30px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:12px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;box-shadow:0 1px 2px rgba(36,31,26,.04),0 20px 50px -30px rgba(36,31,26,.4)}
+  .nav{display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 10px;border-radius:17px;text-decoration:none;color:var(--ink);
+    background:transparent;border:0;cursor:pointer;font:inherit;transition:background .14s ease,transform .1s ease}
+  .nav:hover{background:var(--paper2)} .nav:active{transform:translateY(1px)}
+  .nav .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--jade-soft);color:var(--jade)}
+  .nav.a .ic{background:var(--clay-soft);color:var(--clay)}
+  .nav .ic svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .nav .t{font:600 14px Inter;letter-spacing:-.01em}
+  .nav .s{font-size:11.5px;color:var(--faint);margin-top:-4px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:16px 30px;font:600 16px Inter;text-decoration:none;transition:transform .1s ease}
   .btn:active{transform:translateY(1px)}
-  .btn.primary{background:var(--ink);color:var(--paper)}
-  .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(36,31,26,.2)}
-  .btn .arw{font-size:18px}
-  .hint{margin-top:18px;font-size:13px;color:rgba(36,31,26,.5)}
-  .foot{margin-top:46px;font-size:13px;color:rgba(36,31,26,.5);line-height:1.6;text-align:center}
+  .btn.primary{background:var(--ink);color:var(--paper)} .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(36,31,26,.2)}
+  /* dossier */
+  .section{margin-top:56px}
+  .seclabel{font:600 11px Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);text-align:center;margin-bottom:8px}
+  .sectitle{font-size:clamp(26px,4vw,36px);line-height:1.05;letter-spacing:-.02em;font-weight:360;text-align:center}
+  .sectitle em{font-style:italic;color:var(--clay)}
+  .docs{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .doc{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;text-decoration:none;color:var(--ink);
+    box-shadow:0 1px 1px rgba(36,31,26,.04),0 10px 22px -16px rgba(36,31,26,.3);transition:transform .1s ease}
+  .doc:hover{transform:translateY(-2px)}
+  .doc .n{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--clay);font-weight:500;flex:none;width:26px}
+  .doc .m{flex:1;min-width:0} .doc .m .tt{font-family:Fraunces,Georgia,serif;font-size:18px;font-weight:460;line-height:1.15}
+  .doc .m .dd{font-size:12.5px;color:var(--faint);margin-top:3px} .doc .arw{color:var(--faint);font-size:18px}
+  .foot{margin-top:60px;font-size:13px;color:var(--faint);line-height:1.6;text-align:center}
   .foot b{color:var(--clay);font-weight:600}
-  @media (prefers-color-scheme:dark){
-    :root{--paper:#16120f;--paper2:#0e0c0a;--ink:#f0e7d9;--clay:#de7040;--jade:#46c4aa}
-    .btn.primary{background:var(--jade);color:#0e0c0a}
+  /* copilot */
+  .cop-fab{position:fixed;right:max(18px,env(safe-area-inset-right,0));bottom:22px;z-index:30;display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:var(--paper);border:0;cursor:pointer;border-radius:999px;padding:15px 22px;font:600 15px Inter;
+    box-shadow:0 10px 30px -8px rgba(36,31,26,.5)}
+  .cop-fab svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .cop-fab .dot{width:8px;height:8px;border-radius:50%;background:var(--jade);box-shadow:0 0 0 0 rgba(31,122,107,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,184,159,.5)}70%{box-shadow:0 0 0 7px rgba(63,184,159,0)}100%{box-shadow:0 0 0 0 rgba(63,184,159,0)}}
+  .cop{position:fixed;right:max(16px,env(safe-area-inset-right,0));bottom:18px;z-index:31;width:min(420px,calc(100vw - 28px));height:min(620px,calc(100vh - 36px));
+    background:var(--surface);border:1px solid var(--line);border-radius:24px;display:none;flex-direction:column;overflow:hidden;
+    box-shadow:0 40px 90px -24px rgba(36,31,26,.55),0 0 0 1px rgba(36,31,26,.05)}
+  .cop.open{display:flex}
+  .cop-h{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;background:var(--paper2)}
+  .cop-h .av{width:40px;height:40px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
+  .cop-h .av svg{width:22px;height:22px}
+  .cop-h .ti{flex:1} .cop-h .ti b{font-family:Fraunces,Georgia,serif;font-weight:500;font-size:17px;display:block}
+  .cop-h .ti span{font-size:12px;color:var(--faint)}
+  .cop-h .x{background:transparent;border:0;cursor:pointer;color:var(--faint);font-size:22px;line-height:1;padding:4px 8px}
+  .cop-msgs{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+  .bub{max-width:88%;padding:12px 15px;border-radius:16px;font-size:14.5px;line-height:1.5}
+  .bub.emma{align-self:flex-start;background:var(--paper2);color:var(--ink);border-bottom-left-radius:5px}
+  .bub.me{align-self:flex-end;background:var(--ink);color:var(--paper);border-bottom-right-radius:5px}
+  .bub .clave{display:inline-flex;gap:6px;align-items:center;margin-top:10px;font:600 12px Inter;background:var(--jade-soft);color:var(--jade);border-radius:999px;padding:5px 11px}
+  .bub .ref{margin-top:9px;font-size:11.5px;color:var(--faint)}
+  .bub .golink{display:inline-flex;align-items:center;gap:6px;margin-top:10px;margin-right:7px;font:600 12.5px Inter;text-decoration:none;background:var(--ink);color:var(--paper);border-radius:999px;padding:8px 14px}
+  .bub .golink.sec{background:transparent;color:var(--jade);border:1px solid var(--jade)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 18px 10px}
+  .chip{background:transparent;border:1px solid var(--line);color:var(--soft);border-radius:999px;padding:8px 13px;font:500 12.5px Inter;cursor:pointer;transition:background .12s}
+  .chip:hover{background:var(--paper2)}
+  .cop-in{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line);background:var(--paper2)}
+  .cop-in input{flex:1;height:46px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 18px;font:400 14.5px Inter;color:var(--ink);outline:none}
+  .cop-in input:focus{border-color:var(--jade)}
+  .cop-in button{width:46px;height:46px;flex:none;border:0;border-radius:50%;background:var(--ink);color:var(--paper);cursor:pointer;display:grid;place-items:center}
+  .cop-in button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .cop-note{font-size:10.5px;color:var(--faint);text-align:center;padding:0 0 10px;background:var(--paper2)}
+  @media(prefers-color-scheme:dark){
+    :root{--paper:#16120f;--paper2:#0e0c0a;--surface:#1d1a16;--ink:#f0e7d9;--soft:#cbc1b4;--faint:#9c9284;--line:rgba(255,255,255,.12);--clay:#de7040;--jade:#46c4aa;--clay-soft:rgba(222,112,64,.14);--jade-soft:rgba(70,196,170,.14)}
+    .btn.primary,.cop-fab,.cop-in button,.bub.me{background:var(--jade);color:#0e0c0a}
+    .bub.me{color:#0e0c0a}
   }
+  @media(max-width:640px){.controller{grid-template-columns:repeat(2,1fr)}.docs{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="mark">
-      <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="2" fill="var(--clay)"/><circle cx="9" cy="9" r="5" fill="none" stroke="rgba(36,31,26,.45)" stroke-width=".8"/><circle cx="9" cy="9" r="8.2" fill="none" stroke="rgba(36,31,26,.2)" stroke-width=".8"/></svg>
-      <b>EMMA</b><span class="sep"></span><span>Lee a tu ritmo</span>
+    <div class="center">
+      <div class="mark"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="2" fill="var(--clay)"/><circle cx="9" cy="9" r="5" fill="none" stroke="rgba(36,31,26,.45)" stroke-width=".8"/><circle cx="9" cy="9" r="8.2" fill="none" stroke="rgba(36,31,26,.2)" stroke-width=".8"/></svg><b>EMMA</b><span class="sep"></span><span>Lee a tu ritmo</span></div>
+      <p class="kick">Proyecto Guelaguetza · Hack4Edu 2026</p>
+      <h1 class="serif">Primero, <em>míralo.</em></h1>
+      <p class="lede">EMMA — el Sistema de Aprendizaje Circunstancial. Empieza por el vídeo; después entra al deck narrado, consulta el dossier o pregúntale al copiloto.</p>
     </div>
-    <p class="kick">Proyecto Guelaguetza · Hack4Edu 2026</p>
-    <h1 class="serif">Primero, <em>míralo.</em></h1>
-    <p class="lede">EMMA — el Sistema de Aprendizaje Circunstancial. Empieza por el vídeo de presentación; después, entra al deck narrado con voz.</p>
 
     <div class="videobox">
       <video controls preload="metadata" playsinline poster="video/poster.jpg">
@@ -61,13 +120,151 @@
       </video>
     </div>
 
+    <!-- Controlador / lanzador -->
+    <nav class="controller" aria-label="Navegación">
+      <a class="nav a" href="deck_narrado.html">
+        <span class="ic"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="t">Deck narrado</span><span class="s">con voz</span></a>
+      <a class="nav" href="deck.html">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></span>
+        <span class="t">Deck completo</span><span class="s">slide a slide</span></a>
+      <a class="nav" href="#dossier">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v6h6"/></svg></span>
+        <span class="t">Dossier</span><span class="s">5 documentos</span></a>
+      <button class="nav" type="button" id="openCop">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="t">Copiloto</span><span class="s">pregunta y responde</span></button>
+    </nav>
+
     <div class="cta">
-      <a class="btn primary" href="deck_narrado.html">Ver el deck narrado <span class="arw">→</span></a>
-      <a class="btn ghost" href="deck.html">Deck completo (sin voz)</a>
+      <a class="btn primary" href="deck_narrado.html">Entrar al deck narrado <span>→</span></a>
+      <a class="btn ghost" href="preguntas.html">Preguntas y respuestas</a>
     </div>
-    <p class="hint">El deck narrado se recorre solo, con voz. El vídeo de arriba dura ~4 min.</p>
+
+    <!-- Dossier -->
+    <section class="section" id="dossier">
+      <p class="seclabel">Dossier para el jurado</p>
+      <h2 class="sectitle serif">Todo, por <em>escrito.</em></h2>
+      <div class="docs">
+        <a class="doc" href="dossier/01_resumen_ejecutivo.pdf" target="_blank" rel="noopener"><span class="n">01</span><span class="m"><span class="tt">Resumen ejecutivo</span><span class="dd">Qué es, en una página</span></span><span class="arw">↗</span></a>
+        <a class="doc" href="dossier/02_estudio_de_mercado.pdf" target="_blank" rel="noopener"><span class="n">02</span><span class="m"><span class="tt">Estudio de mercado</span><span class="dd">Cifras, coste y sostenibilidad</span></span><span class="arw">↗</span></a>
+        <a class="doc" href="dossier/03_negocio_y_viabilidad.pdf" target="_blank" rel="noopener"><span class="n">03</span><span class="m"><span class="tt">Negocio y viabilidad</span><span class="dd">Modelo y hoja de ruta</span></span><span class="arw">↗</span></a>
+        <a class="doc" href="dossier/04_especificaciones_tecnicas.pdf" target="_blank" rel="noopener"><span class="n">04</span><span class="m"><span class="tt">Especificaciones técnicas</span><span class="dd">Arquitectura, κ y privacidad</span></span><span class="arw">↗</span></a>
+        <a class="doc" href="dossier/05_anexo_de_evidencias.pdf" target="_blank" rel="noopener"><span class="n">05</span><span class="m"><span class="tt">Anexo de evidencias</span><span class="dd">Necesidad, avales y obra registrada</span></span><span class="arw">↗</span></a>
+        <a class="doc" href="preguntas.html"><span class="n">Q&amp;A</span><span class="m"><span class="tt">Preguntas y respuestas</span><span class="dd">15 preguntas del jurado</span></span><span class="arw">→</span></a>
+      </div>
+    </section>
 
     <p class="foot">EMMA · <b>Proyecto Guelaguetza</b> — Territorio · Conocimiento · Desarrollo<br>Hack4Edu 2026 · ProFuturo × Universidad Pontificia de Salamanca</p>
   </div>
+
+  <!-- Copiloto -->
+  <button class="cop-fab" id="fab" aria-label="Abrir copiloto"><span class="dot"></span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Copiloto</button>
+  <div class="cop" id="cop" role="dialog" aria-label="Copiloto de la defensa">
+    <div class="cop-h">
+      <span class="av"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="2" fill="var(--clay)"/><circle cx="9" cy="9" r="5" fill="none" stroke="var(--faint)" stroke-width=".8"/><circle cx="9" cy="9" r="8.2" fill="none" stroke="var(--line)" stroke-width=".8"/></svg></span>
+      <span class="ti"><b>Copiloto de la defensa</b><span>Responde como lo haría EMMA · offline</span></span>
+      <button class="x" id="closeCop" aria-label="Cerrar">×</button>
+    </div>
+    <div class="cop-msgs" id="msgs"></div>
+    <div class="chips" id="chips"></div>
+    <div class="cop-in">
+      <input id="q" type="text" placeholder="Pregunta como el jurado…" autocomplete="off">
+      <button id="send" aria-label="Enviar"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7"/></svg></button>
+    </div>
+    <p class="cop-note">Respuestas preparadas · sin internet · sin IA generativa</p>
+  </div>
+
+<script>
+const QA=[
+ {q:"¿Qué es EMMA en una frase?",a:"EMMA —Extended Mind Measured Acoustically— es un instrumento que escucha al niño leer, mide su comprensión de forma demostrable y se retira cuando ya aprende solo; sin conexión y partiendo de su propia cultura. Es el instrumento aplicado del método SAC (Sistema de Aprendizaje Circunstancial).",c:"Instrumento de medida, no una app más.",k:["que es","definicion","frase","resumen","emma","significa","sac"]},
+ {q:"¿En qué se diferencia de repartir tabletas o de otra edtech?",a:"No mide el despliegue —dispositivos, horas, clics—, mide la brecha entre desplegar y que alguien de verdad aprenda. No genera contenido: elige de un banco validado. Y está diseñada para volverse innecesaria (pedagogía negativa), no para maximizar el enganche.",c:"Mide el aprendizaje, no el despliegue.",k:["diferencia","tabletas","tableta","edtech","competencia","distingue","otra app","novedad","nuevo"]},
+ {q:"¿Cómo medís el aprendizaje «de verdad»?",a:"Con comprensión demostrable: el niño debe reformular, transferir, objetar y reconocer sus límites (al menos 3 de 4). Y con la huella de lectura —su prosodia: ritmo, cadencia de las vocales, melodía— para localizar dónde empieza a resbalar la comprensión. No la damos por supuesta.",c:"No lo que dice: cómo lo dice.",k:["medir","medis","aprendizaje","comprension","demostrable","huella","prosodia","reformula","transfiere","de verdad"]},
+ {q:"¿Qué es el coeficiente κ (kappa)?",a:"Una medida del acoplamiento humano–IA: distingue si la herramienta amplía la cognición del niño o la sustituye. Hoy está formulado y demostrado matemáticamente; su validación empírica forma parte de la hoja de ruta (experimento preregistrado).",c:"Ampliar, no sustituir.",k:["kappa","κ","acoplamiento","ampliar","sustituir","coeficiente","k"]},
+ {q:"¿Funciona de verdad sin conexión?",a:"Sí. Cuatro ceros: cero nube, cero cuenta, cero datos fuera, cero modelo oculto. El cerebro es local, así que no necesita red — y por eso es viable en entornos con recursos limitados.",c:"Local de verdad: los cuatro ceros.",k:["offline","sin conexion","conexion","internet","ceros","nube","local","funciona"]},
+ {q:"¿No estáis infiriendo emociones del niño?",a:"No. El ánimo lo declara el propio niño (autoinforme); EMMA no infiere estados emocionales. Es coherente con el art. 5.1.f del Reglamento de IA de la UE, que prohíbe el reconocimiento de emociones en el aula.",c:"El ánimo lo dice el niño, no la máquina.",k:["emociones","emocion","inferir","reconocimiento","animo","sentimientos","ai act","reglamento","ue"]},
+ {q:"¿Qué pasa con los datos de un menor?",a:"No salen del dispositivo. Los cuatro ceros garantizan que no hay recogida ni envío de datos personales: todo el procesamiento es local. No hay cuenta que crear ni perfil que almacenar.",c:"Nada sale del dispositivo.",k:["datos","menor","privacidad","gdpr","rgpd","personales","proteccion"]},
+ {q:"¿Qué significa «elige, no genera»?",a:"EMMA no produce texto libre: selecciona de un banco de recursos validado. Así se evita la alucinación del modelo y se mantiene el control pedagógico de lo que el niño recibe.",c:"Selecciona de un banco validado.",k:["elige","genera","banco","alucinacion","selecciona","inventa","no invento","generativa"]},
+ {q:"¿Esto no sustituye al maestro?",a:"Al contrario: le devuelve el juicio. Le propone una hipótesis de barrera —dónde está el obstáculo, nunca «quién es el culpable»— y le pide su criterio antes de ver la sugerencia (juicio ciego). El maestro decide.",c:"Hipótesis de barrera + juicio ciego.",k:["maestro","docente","sustituye","profesor","juicio","reemplaza","sustituir maestro"]},
+ {q:"¿Qué es la «pedagogía negativa»?",a:"El andamiaje se retira cuando el niño pedalea solo. EMMA se mide por cuánto menos la necesitan, no por cuánto los retiene. Es, con permiso, «la única inteligencia artificial con la decencia de volverse innecesaria».",c:"Los ruedines se quitan.",k:["pedagogia negativa","andamiaje","retira","innecesaria","ruedines","negativa","desaparece"]},
+ {q:"¿Esto ataca o compite con el DUA?",a:"No. EMMA pone el DUA en práctica: parte de la circunstancia de cada niño —su lengua, su ritmo, su foco— para hacer accesible el aprendizaje y, además, demostrarlo. Es el DUA con un instrumento de medida.",c:"Pone el DUA en práctica.",k:["dua","ataca","compite","diseño universal","accesibilidad","contra"]},
+ {q:"¿Qué evidencia tenéis de que funciona?",a:"EMMA es un instrumento de medida del aprendizaje demostrable, no una prueba de eficacia. Mide si los recursos y las intervenciones se traducen en impacto real. Cuenta con el aval académico de David Doncel (Universidad de Salamanca). La validación causal corresponde a un experimento preregistrado.",c:"Instrumento de medida, no prueba de eficacia.",k:["evidencia","aval","doncel","eficacia","prueba","validacion","demostrado","funciona de verdad"]},
+ {q:"¿Es viable? ¿Escala?",a:"Al funcionar en local y partir de la cultura del niño, escala en contextos vulnerables sin coste de nube. Oaxaca es el piloto; el modelo se apoya en figuras fiscales ligeras y en la transferencia a instituciones, no en un gasto recurrente por aula.",c:"Sin coste de nube: escala donde más falta.",k:["viable","escala","mercado","coste","negocio","oaxaca","sostenible","dinero","precio"]},
+ {q:"¿Por qué «Extended Mind», por qué la voz?",a:"Porque la inteligencia nunca estuvo solo en la cabeza: se piensa con la cultura. EMMA no fabrica una mente, mide y extiende la que ya existe. Y lo hace por la voz porque la comprensión deja huella en cómo se lee, no solo en lo que se responde.",c:"No inyecta inteligencia: mide la que ya hay.",k:["extended mind","voz","por que la voz","mente extendida","cultura","nombre","acustica"]},
+ {q:"¿Cuál es el límite honesto del proyecto?",a:"No promete el milagro: dice si la tarea se comprendió, no si el mundo cambió. Ofrece algo más raro y más útil —una manera de saber si el aprendizaje, esta vez, ocurrió—.",c:"No el milagro: saber si ocurrió.",k:["limite","honesto","milagro","limitacion","no promete","riesgo","debil","problema"]}
+];
+const norm=s=>(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9ñ ]/g," ");
+const STOP=new Set("de la el en y a los las un una que como es con para por su sus al del se lo o u".split(" "));
+function best(query){
+  const qn=norm(query), toks=qn.split(/\s+/).filter(t=>t.length>2&&!STOP.has(t));
+  let scored=QA.map((it,i)=>{
+    const hay=norm(it.q)+" "+it.k.join(" ")+" "+norm(it.a);
+    let s=0;
+    for(const t of toks){
+      if(norm(it.q).includes(t)) s+=3;
+      if(it.k.some(k=>norm(k).includes(t)||t.includes(norm(k)))) s+=3;
+      if(norm(it.a).includes(t)) s+=1;
+    }
+    // bonus: full keyword phrase match
+    for(const k of it.k){ if(qn.includes(norm(k))) s+=2; }
+    return {i,s};
+  }).sort((a,b)=>b.s-a.s);
+  return scored;
+}
+const msgs=document.getElementById('msgs'), chipsEl=document.getElementById('chips'), input=document.getElementById('q');
+const cop=document.getElementById('cop');
+const DOCMAP={
+ 0:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],1:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],
+ 2:["Especificaciones técnicas","dossier/04_especificaciones_tecnicas.pdf"],3:["Especificaciones técnicas","dossier/04_especificaciones_tecnicas.pdf"],
+ 4:["Especificaciones técnicas","dossier/04_especificaciones_tecnicas.pdf"],5:["Especificaciones técnicas","dossier/04_especificaciones_tecnicas.pdf"],
+ 6:["Especificaciones técnicas","dossier/04_especificaciones_tecnicas.pdf"],7:["Especificaciones técnicas","dossier/04_especificaciones_tecnicas.pdf"],
+ 8:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],9:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],
+ 10:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],11:["Anexo de evidencias","dossier/05_anexo_de_evidencias.pdf"],
+ 12:["Estudio de mercado","dossier/02_estudio_de_mercado.pdf"],13:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],
+ 14:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"]};
+function bubble(txt,who,clave,ref,links){
+  const d=document.createElement('div'); d.className='bub '+who;
+  d.innerHTML=txt.replace(/</g,'&lt;');
+  if(clave){const c=document.createElement('div');c.className='clave';c.textContent='✦ '+clave;d.appendChild(c);}
+  if(ref){const r=document.createElement('div');r.className='ref';r.textContent=ref;d.appendChild(r);}
+  if(links&&links.length){const w=document.createElement('div');
+    links.forEach(l=>{const a=document.createElement('a');a.className='golink'+(l.sec?' sec':'');a.href=l.href;a.textContent=l.label;if(l.ext){a.target='_blank';a.rel='noopener';}w.appendChild(a);});
+    d.appendChild(w);}
+  msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
+}
+function suggestions(list){
+  chipsEl.innerHTML='';
+  list.forEach(i=>{const b=document.createElement('button');b.className='chip';b.textContent=QA[i].q;b.onclick=()=>ask(QA[i].q);chipsEl.appendChild(b);});
+}
+function ask(query){
+  if(!query.trim())return;
+  bubble(query,'me');
+  input.value='';
+  const sc=best(query), top=sc[0];
+  if(!top||top.s<3){
+    bubble("No tengo esa exactamente preparada. ¿Te refieres a alguna de estas?",'emma');
+    suggestions(sc.slice(0,4).map(x=>x.i));
+    return;
+  }
+  const it=QA[top.i], n=top.i+1;
+  const links=[{label:"Ver la respuesta completa →",href:"preguntas.html#Q"+n}];
+  const dm=DOCMAP[top.i]; if(dm) links.push({label:"Dossier: "+dm[0]+" ↗",href:dm[1],sec:true,ext:true});
+  bubble(it.a,'emma',it.c,"Q"+n+" · "+it.q,links);
+  // offer related
+  suggestions(sc.slice(1,4).filter(x=>x.s>0).map(x=>x.i));
+}
+// greeting + starter chips
+function greet(){
+  if(msgs.childElementCount)return;
+  bubble("Hola. Soy el copiloto de la defensa. Pregúntame lo que preguntaría el jurado y te doy la respuesta preparada, al instante. Prueba una:",'emma');
+  suggestions([0,4,5,8,3]);
+}
+function openCop(){cop.classList.add('open');greet();setTimeout(()=>input.focus(),200);}
+document.getElementById('fab').onclick=openCop;
+document.getElementById('openCop').onclick=openCop;
+document.getElementById('closeCop').onclick=()=>cop.classList.remove('open');
+document.getElementById('send').onclick=()=>ask(input.value);
+input.addEventListener('keydown',e=>{if(e.key==='Enter')ask(input.value);});
+</script>
 </body>
 </html>

@@ -70,6 +70,22 @@
   .sci .wh{font-size:14px;line-height:1.5;color:var(--soft);margin-top:10px}
   .sci .wh b{color:var(--ink);font-weight:600}
 
+  /* roadmap (próximos 2 años) */
+  .road{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+  .rstep{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 18px;position:relative;
+    box-shadow:0 1px 1px rgba(36,31,26,.04),0 12px 26px -20px rgba(36,31,26,.3)}
+  .rstep::before{content:"";position:absolute;top:-8px;left:20px;width:15px;height:15px;border-radius:50%;background:var(--surface);border:3px solid var(--jade)}
+  .rstep.s2::before{border-color:var(--ochre)} .rstep.s3::before{border-color:var(--clay)} .rstep.s4::before{border-color:var(--faint);border-style:dashed}
+  .rstep .rp{font:700 11px Inter;letter-spacing:.08em;color:var(--jade);margin-top:4px}
+  .rstep.s2 .rp{color:var(--ochre)} .rstep.s3 .rp{color:var(--clay)} .rstep.s4 .rp{color:var(--faint)}
+  .rstep .rt{font-family:Fraunces,Georgia,serif;font-size:17px;font-weight:500;letter-spacing:-.01em;line-height:1.15;margin:4px 0 10px}
+  .rstep ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
+  .rstep li{font-size:13px;line-height:1.4;color:var(--soft);padding-left:15px;position:relative}
+  .rstep li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--jade);opacity:.7}
+  .rstep.s2 li::before{background:var(--ochre)} .rstep.s3 li::before{background:var(--clay)} .rstep.s4 li::before{background:var(--faint)}
+  .road-note{margin-top:16px;font-size:12.5px;color:var(--faint);font-style:italic;line-height:1.5}
+  @media(max-width:760px){.road{grid-template-columns:1fr 1fr}}
+  @media(max-width:460px){.road{grid-template-columns:1fr}}
   /* claim blocks (respaldo por afirmación) */
   .claim{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;
     box-shadow:0 1px 1px rgba(36,31,26,.04),0 12px 26px -20px rgba(36,31,26,.3)}
@@ -143,6 +159,52 @@
         <span class="tag" style="background:var(--clay-soft);color:var(--clay)">lo que falta por demostrar</span>
       </div>
     </div>
+  </section>
+
+  <!-- ROADMAP próximos 2 años -->
+  <section class="blk">
+    <p class="lab">El recorrido · próximos 2 años</p>
+    <h2 class="serif">Hacia dónde <em>va.</em></h2>
+    <p class="sub">De la app que funciona hoy a la validación empírica. Dos años, cuatro etapas — el plan, no una promesa: cada fase se marca como objetivo, no como resultado.</p>
+    <div class="road">
+      <div class="rstep s1">
+        <div class="rp">2027 · 1.er semestre</div>
+        <div class="rt">Piloto en aula real</div>
+        <ul>
+          <li>Validar el verificador prosódico (nPVI-V, %V, Δf0) en lectura real, fuera del banco.</li>
+          <li>Co-diseño cultural de la piel oaxaqueña con la comunidad.</li>
+          <li>Calibración del protocolo (n≈12) y reducción de ítems.</li>
+        </ul>
+      </div>
+      <div class="rstep s2">
+        <div class="rp">2027 · 2.º semestre</div>
+        <div class="rt">Primer estudio con-sin apoyo</div>
+        <ul>
+          <li>Diseño intra-sujeto: con y sin mediación de IA.</li>
+          <li>κ como instrumento de medida del proyecto HERMES (PID2026).</li>
+          <li>Publicación del marco HACC (revista Q1).</li>
+        </ul>
+      </div>
+      <div class="rstep s3">
+        <div class="rp">2028 · 1.er semestre</div>
+        <div class="rt">Validación psicométrica</div>
+        <ul>
+          <li>EFA sobre el núcleo de dimensiones (N≈60); fiabilidad con material equiparado.</li>
+          <li>Bucle de retroalimentación κ con pedagogía negativa adaptativa.</li>
+          <li>Primeros datos de validez incremental.</li>
+        </ul>
+      </div>
+      <div class="rstep s4">
+        <div class="rp">2028 · 2.º semestre</div>
+        <div class="rt">Despliegue y apertura</div>
+        <ul>
+          <li>Piloto de despliegue vía ProFuturo y red de Cátedras.</li>
+          <li>Dataset abierto (Zenodo, DOI) · UBUNIA-2.0 (AGPLv3).</li>
+          <li>Base para la primera validación empírica de κ.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="road-note">Estas etapas son objetivos del plan doctoral (FPU 2027–2031); su primer tramo de dos años. κ no es prueba de eficacia hasta completar su validación empírica.</p>
   </section>
 
   <!-- DIAGRAMS -->

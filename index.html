@@ -112,34 +112,43 @@
       <div class="mark"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="2" fill="var(--clay)"/><circle cx="9" cy="9" r="5" fill="none" stroke="rgba(36,31,26,.45)" stroke-width=".8"/><circle cx="9" cy="9" r="8.2" fill="none" stroke="rgba(36,31,26,.2)" stroke-width=".8"/></svg><b>EMMA</b><span class="sep"></span><span>Lee a tu ritmo</span></div>
       <p class="kick">Proyecto Guelaguetza · Hack4Edu 2026</p>
       <h1 class="serif">Primero, <em>míralo.</em></h1>
-      <p class="lede">EMMA — el Sistema de Aprendizaje Circunstancial. Empieza por el vídeo; después entra al deck narrado, consulta el dossier o pregúntale al copiloto.</p>
+      <p class="lede">EMMA — el Sistema de Aprendizaje Circunstancial. Pincha donde quieras: el vídeo, la app, el deck, el dossier o el copiloto.</p>
     </div>
 
-    <div class="videobox">
+    <!-- Panel de accesos (al principio) -->
+    <nav class="controller" aria-label="Accesos del proyecto">
+      <a class="nav" href="#video">
+        <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polygon points="10 8 16 12 10 16 10 8"/></svg></span>
+        <span class="t">Vídeo</span><span class="s">la demo</span></a>
+      <a class="nav a" href="https://diegoelviravasquez-ai.github.io/EMMA_app_real/" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+        <span class="t">La app</span><span class="s">pruébala</span></a>
+      <a class="nav" href="deck_narrado.html">
+        <span class="ic"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+        <span class="t">Deck narrado</span><span class="s">con voz</span></a>
+      <a class="nav" href="dossier/02_estudio_de_mercado.pdf" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+        <span class="t">Mercado</span><span class="s">cifras y coste</span></a>
+      <a class="nav" href="dossier/03_negocio_y_viabilidad.pdf" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span>
+        <span class="t">Negocio</span><span class="s">plan y viabilidad</span></a>
+      <a class="nav" href="tiempo-autonomia.html">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l4 2"/></svg></span>
+        <span class="t">La variable</span><span class="s">el impacto</span></a>
+      <a class="nav" href="dossier/05_anexo_de_evidencias.pdf" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <span class="t">Anexo</span><span class="s">IP y premios</span></a>
+      <button class="nav" type="button" id="openCop2">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span class="t">Copiloto</span><span class="s">pregunta</span></button>
+    </nav>
+
+    <div class="videobox" id="video">
       <video controls preload="metadata" playsinline poster="video/poster.jpg">
         <source src="video/EMMA_video_narrado_tablet.mp4" type="video/mp4">
         Tu navegador no puede reproducir el vídeo. <a href="video/EMMA_video_narrado_tablet.mp4">Descárgalo aquí</a>.
       </video>
     </div>
-
-    <!-- Controlador / lanzador -->
-    <nav class="controller" aria-label="Navegación">
-      <a class="nav a" href="deck_narrado.html">
-        <span class="ic"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
-        <span class="t">Deck narrado</span><span class="s">con voz</span></a>
-      <a class="nav" href="deck.html">
-        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg></span>
-        <span class="t">Deck completo</span><span class="s">slide a slide</span></a>
-      <a class="nav" href="#dossier">
-        <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h10l6 6v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v6h6"/></svg></span>
-        <span class="t">Dossier</span><span class="s">5 documentos</span></a>
-      <a class="nav" href="tiempo-autonomia.html">
-        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l6 3"/></svg></span>
-        <span class="t">La variable</span><span class="s">para ProFuturo</span></a>
-      <button class="nav" type="button" id="openCop">
-        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-        <span class="t">Copiloto</span><span class="s">pregunta y responde</span></button>
-    </nav>
 
     <div class="cta">
       <a class="btn primary" href="deck_narrado.html">Entrar al deck narrado <span>→</span></a>
@@ -286,7 +295,7 @@ function greet(){
 }
 function openCop(){cop.classList.add('open');greet();setTimeout(()=>input.focus(),200);}
 document.getElementById('fab').onclick=openCop;
-document.getElementById('openCop').onclick=openCop;
+var _oc=document.getElementById('openCop2');if(_oc)_oc.onclick=openCop;
 document.getElementById('closeCop').onclick=()=>cop.classList.remove('open');
 document.getElementById('send').onclick=()=>ask(input.value);
 input.addEventListener('keydown',e=>{if(e.key==='Enter')ask(input.value);});

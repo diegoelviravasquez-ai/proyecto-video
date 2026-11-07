@@ -87,6 +87,8 @@
   .bub .ref{margin-top:9px;font-size:11.5px;color:var(--faint)}
   .bub .golink{display:inline-flex;align-items:center;gap:6px;margin-top:10px;margin-right:7px;font:600 12.5px Inter;text-decoration:none;background:var(--ink);color:var(--paper);border-radius:999px;padding:8px 14px}
   .bub .golink.sec{background:transparent;color:var(--jade);border:1px solid var(--jade)}
+  .bub .short{font-weight:600;color:var(--ink)}
+  .bub .pts{margin:8px 0 2px;padding-left:16px} .bub .pts li{margin:4px 0;line-height:1.42}
   .chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 18px 10px}
   .chip{background:transparent;border:1px solid var(--line);color:var(--soft);border-radius:999px;padding:8px 13px;font:500 12.5px Inter;cursor:pointer;transition:background .12s}
   .chip:hover{background:var(--paper2)}
@@ -193,6 +195,23 @@ const QA=[
  {q:"¿Por qué «Extended Mind», por qué la voz?",a:"Porque la inteligencia nunca estuvo solo en la cabeza: se piensa con la cultura. EMMA no fabrica una mente, mide y extiende la que ya existe. Y lo hace por la voz porque la comprensión deja huella en cómo se lee, no solo en lo que se responde.",c:"No inyecta inteligencia: mide la que ya hay.",k:["extended mind","voz","por que la voz","mente extendida","cultura","nombre","acustica"]},
  {q:"¿Cuál es el límite honesto del proyecto?",a:"No promete el milagro: dice si la tarea se comprendió, no si el mundo cambió. Ofrece algo más raro y más útil —una manera de saber si el aprendizaje, esta vez, ocurrió—.",c:"No el milagro: saber si ocurrió.",k:["limite","honesto","milagro","limitacion","no promete","riesgo","debil","problema"]}
 ];
+const STRUCT={
+ 0:{s:"Un instrumento que escucha al niño leer y mide si de verdad comprende.",p:["Se retira cuando ya aprende solo","Sin conexión y desde su propia cultura","Es el método SAC, aplicado"]},
+ 1:{s:"Mide el aprendizaje, no el despliegue (clics, horas, tabletas).",p:["No genera: elige de un banco validado","Diseñada para volverse innecesaria","No busca enganche"]},
+ 2:{s:"Con comprensión demostrable + la huella de lectura.",p:["Reformula, transfiere, objeta y reconoce límites (3 de 4)","Prosodia: ritmo, vocales, melodía","No la damos por supuesta"]},
+ 3:{s:"Mide el acoplamiento: si la IA amplía o sustituye al niño.",p:["Formulado y demostrado matemáticamente","Validación empírica, en la hoja de ruta"]},
+ 4:{s:"Sí. Cuatro ceros.",p:["Cero nube · cero cuenta","Cero datos fuera · cero modelo oculto","El cerebro es local: no necesita red"]},
+ 5:{s:"No. El ánimo lo declara el niño; EMMA no infiere emociones.",p:["Autoinforme, no inferencia","Cumple el art. 5.1.f del Reglamento de IA de la UE"]},
+ 6:{s:"No salen del dispositivo. Nada se recoge ni se envía.",p:["Todo el procesamiento es local","Sin cuenta ni perfil que almacenar"]},
+ 7:{s:"No produce texto libre: selecciona de un banco validado.",p:["Evita la alucinación del modelo","Mantiene el control pedagógico"]},
+ 8:{s:"Al contrario: le devuelve el juicio al maestro.",p:["Propone una hipótesis de barrera","Pide su criterio antes de ver la sugerencia (juicio ciego)","El maestro decide"]},
+ 9:{s:"El andamiaje se retira cuando el niño pedalea solo.",p:["Se mide por cuánto menos la necesitan","«La única IA con la decencia de volverse innecesaria»"]},
+ 10:{s:"No lo ataca: pone el DUA en práctica.",p:["Parte de la lengua, el ritmo y el foco de cada niño","El DUA con un instrumento de medida"]},
+ 11:{s:"Es un instrumento de medida, no una prueba de eficacia.",p:["Mide si la intervención se traduce en impacto","Aval de David Doncel (USAL)","Validación causal: experimento preregistrado"]},
+ 12:{s:"Escala sin coste de nube, donde más falta.",p:["Local y desde la cultura del niño","Oaxaca es el piloto","Transferencia a instituciones, no gasto por aula"]},
+ 13:{s:"La inteligencia se piensa con la cultura; se oye en la voz.",p:["No fabrica una mente: mide y extiende la que ya hay","La comprensión deja huella en cómo se lee"]},
+ 14:{s:"No promete el milagro: dice si se comprendió.",p:["No si el mundo cambió","Sí: saber si el aprendizaje, esta vez, ocurrió"]}
+};
 const norm=s=>(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9ñ ]/g," ");
 const STOP=new Set("de la el en y a los las un una que como es con para por su sus al del se lo o u".split(" "));
 function best(query){
@@ -222,9 +241,9 @@ const DOCMAP={
  10:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],11:["Anexo de evidencias","dossier/05_anexo_de_evidencias.pdf"],
  12:["Estudio de mercado","dossier/02_estudio_de_mercado.pdf"],13:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"],
  14:["Resumen ejecutivo","dossier/01_resumen_ejecutivo.pdf"]};
-function bubble(txt,who,clave,ref,links){
+function bubble(txt,who,clave,ref,links,isHtml){
   const d=document.createElement('div'); d.className='bub '+who;
-  d.innerHTML=txt.replace(/</g,'&lt;');
+  d.innerHTML=isHtml?txt:txt.replace(/</g,'&lt;');
   if(clave){const c=document.createElement('div');c.className='clave';c.textContent='✦ '+clave;d.appendChild(c);}
   if(ref){const r=document.createElement('div');r.className='ref';r.textContent=ref;d.appendChild(r);}
   if(links&&links.length){const w=document.createElement('div');
@@ -249,7 +268,10 @@ function ask(query){
   const it=QA[top.i], n=top.i+1;
   const links=[{label:"Ver la respuesta completa →",href:"preguntas.html#Q"+n}];
   const dm=DOCMAP[top.i]; if(dm) links.push({label:"Dossier: "+dm[0]+" ↗",href:dm[1],sec:true,ext:true});
-  bubble(it.a,'emma',it.c,"Q"+n+" · "+it.q,links);
+  const st=STRUCT[top.i];
+  let html=it.a;
+  if(st){ html='<div class="short">'+st.s+'</div>'; if(st.p&&st.p.length) html+='<ul class="pts"><li>'+st.p.join('</li><li>')+'</li></ul>'; }
+  bubble(html,'emma',it.c,"Q"+n+" · "+it.q,links,true);
   // offer related
   suggestions(sc.slice(1,4).filter(x=>x.s>0).map(x=>x.i));
 }

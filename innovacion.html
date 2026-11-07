@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La innovación radical</title>
+<meta name="description" content="Por qué EMMA es radicalmente distinta: mide autonomía, no engagement.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#faf7f2;--paper2:#f2ebe0;--surface:#fff;--ink:#241f1a;--soft:#574f45;--faint:#8a8075;
+    --line:rgba(60,40,20,.12);--clay:#c0562a;--jade:#1f7a6b;--ochre:#c69a45;
+    --jade-soft:rgba(31,122,107,.1);--clay-soft:rgba(192,86,42,.1)}
+  @media(prefers-color-scheme:dark){:root{--paper:#16120f;--paper2:#0e0c0a;--surface:#1d1a16;--ink:#f0e7d9;--soft:#cbc1b4;--faint:#9c9284;--line:rgba(255,255,255,.12);--clay:#de7040;--jade:#46c4aa;--ochre:#e0a53f;--jade-soft:rgba(70,196,170,.14);--clay-soft:rgba(222,112,64,.14)}}
+  *{box-sizing:border-box;margin:0} html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
+    background:radial-gradient(60% 34% at 12% 0,rgba(198,154,69,.16),transparent 70%),radial-gradient(55% 40% at 98% 100%,rgba(192,86,42,.1),transparent 70%),var(--paper);
+    padding-left:max(18px,env(safe-area-inset-left,0));padding-right:max(18px,env(safe-area-inset-right,0))}
+  .serif{font-family:Fraunces,Georgia,serif}
+  .wrap{max-width:900px;margin:0 auto;padding:40px 0 80px}
+  .back{display:inline-flex;align-items:center;gap:8px;font:600 13px Inter;color:var(--soft);text-decoration:none;margin-bottom:26px}
+  .mark{display:flex;align-items:center;gap:10px}
+  .mark b{font:600 11px Inter;letter-spacing:.22em;text-transform:uppercase;color:rgba(128,118,105,.9)}
+  /* hero */
+  .kick{font:700 12px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin:30px 0 14px}
+  h1{font-size:clamp(42px,9vw,86px);line-height:.96;letter-spacing:-.035em;font-weight:360}
+  h1 em{font-style:italic;color:var(--clay)}
+  .lede{font-size:clamp(19px,3vw,27px);line-height:1.35;color:var(--soft);max-width:22ch;margin:22px 0 0;font-weight:300}
+  .lede b{color:var(--ink);font-weight:600}
+  /* bloque */
+  .blk{margin-top:64px;padding-top:40px;border-top:1px solid var(--line)}
+  .lab{font:700 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
+  h2{font-size:clamp(30px,6vw,52px);line-height:1.02;letter-spacing:-.025em;font-weight:360;text-wrap:balance}
+  h2 em{font-style:italic;color:var(--clay)} h2 .j{color:var(--jade);font-style:italic}
+  .p{font-size:clamp(16px,2.3vw,19px);line-height:1.55;color:var(--soft);max-width:60ch;margin-top:16px;font-weight:300}
+  .p b{color:var(--ink);font-weight:600}
+  /* contraste */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+  @media(max-width:620px){.vs{grid-template-columns:1fr}}
+  .card{border-radius:22px;padding:26px 24px;border:1px solid var(--line);background:var(--surface)}
+  .card.mut{background:var(--paper2);opacity:.9}
+  .card .tag{font:700 11px Inter;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+  .card.mut .tag{color:var(--faint)} .card.win .tag{color:var(--jade)}
+  .card.win{border-color:var(--jade);background:var(--jade-soft)}
+  .card .big{font:360 clamp(28px,5vw,40px)/1 Fraunces,serif;letter-spacing:-.02em;margin-bottom:12px}
+  .card.win .big{color:var(--jade)}
+  .card ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .card li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:var(--soft);line-height:1.4}
+  .card li svg{width:17px;height:17px;flex:none;margin-top:1px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .card.mut li svg{stroke:var(--faint)} .card.win li svg{stroke:var(--jade)}
+  /* kappa */
+  .kappa{display:flex;flex-wrap:wrap;align-items:center;gap:26px;margin-top:26px}
+  .kappa .glyph{font:360 150px/1 Fraunces,serif;color:var(--clay)}
+  .kdiag{flex:1;min-width:260px}
+  .formula{font-family:Fraunces,serif;font-size:22px;color:var(--jade);margin-top:6px}
+  .arrows{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .arr{flex:1;min-width:130px;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+  .arr.up{background:var(--jade-soft);border-color:var(--jade)} .arr.dn{background:var(--clay-soft);border-color:var(--clay)}
+  .arr .t{font:600 15px Inter} .arr.up .t{color:var(--jade)} .arr.dn .t{color:var(--clay)}
+  .arr .d{font-size:12.5px;color:var(--soft);margin-top:2px}
+  /* stages */
+  .stages{display:flex;align-items:center;gap:8px;margin-top:24px;flex-wrap:wrap}
+  .stg{flex:1;min-width:120px;border:1px solid var(--line);border-radius:14px;padding:14px;background:var(--surface);text-align:center}
+  .stg.on{border-color:var(--jade);background:var(--jade-soft)}
+  .stg b{display:block;font:460 16px Fraunces,serif} .stg.on b{color:var(--jade)}
+  .stg span{font-size:11.5px;color:var(--faint)} .ar{color:var(--faint);font-size:18px}
+  .pull{font-family:Fraunces,serif;font-style:italic;font-size:clamp(24px,5vw,36px);color:var(--clay);margin-top:26px;text-wrap:balance}
+  /* ceros */
+  .ceros{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
+  @media(max-width:620px){.ceros{grid-template-columns:1fr 1fr}}
+  .cero{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--surface);text-align:center}
+  .cero b{display:block;font:460 16px Fraunces,serif;color:var(--jade)} .cero span{font-size:12px;color:var(--faint)}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .badge{font:600 13px Inter;border-radius:999px;padding:9px 16px;background:var(--clay-soft);color:var(--clay)}
+  /* cierre */
+  .close{margin-top:70px;text-align:center}
+  .close .big{font:360 clamp(32px,7vw,60px)/1.02 Fraunces,serif;letter-spacing:-.03em}
+  .close .big em{font-style:italic;color:var(--clay)}
+  .trio{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+  .trio span{font:600 14px Inter;border:1px solid var(--jade);color:var(--jade);border-radius:999px;padding:10px 20px}
+  .cta{display:flex;justify-content:center;gap:12px;margin-top:34px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:15px 28px;font:600 15px Inter;text-decoration:none}
+  .btn.primary{background:var(--ink);color:var(--paper)} .btn.ghost{border:1px solid var(--line);color:var(--ink)}
+  @media(prefers-color-scheme:dark){.btn.primary{background:var(--jade);color:#0e0c0a}}
+  .foot{margin-top:50px;text-align:center;font-size:13px;color:var(--faint);line-height:1.6}
+  .foot b{color:var(--clay)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="./">← Volver a la web</a>
+  <div class="mark"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="2" fill="var(--clay)"/><circle cx="9" cy="9" r="5" fill="none" stroke="rgba(128,118,105,.6)" stroke-width=".8"/><circle cx="9" cy="9" r="8.2" fill="none" stroke="rgba(128,118,105,.3)" stroke-width=".8"/></svg><b>EMMA · Proyecto Guelaguetza</b></div>
+
+  <p class="kick">Por qué EMMA es distinta</p>
+  <h1 class="serif">La innovación <em>radical.</em></h1>
+  <p class="lede">Toda la edtech mide <b>cuánto usas la app.</b><br>EMMA mide <b>cuándo dejas de necesitarla.</b></p>
+
+  <!-- 1 · la inversión -->
+  <section class="blk">
+    <p class="lab">1 · La inversión</p>
+    <h2 class="serif">Mide <span class="j">autonomía</span>,<br>no engagement.</h2>
+    <p class="p">Cada plataforma celebra que pases <b>más tiempo</b> dentro. Es su negocio. EMMA invierte la regla: su éxito es que el niño <b>necesite menos la app</b>. Por eso puede medir aprendizaje de verdad, no adicción.</p>
+    <div class="vs">
+      <div class="card mut"><div class="tag">Lo que mide la edtech</div><div class="big serif">Engagement ↑</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Más minutos en pantalla</li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 7-8"/></svg>Rachas, puntos, notificaciones</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>«Vuelve mañana»</li>
+        </ul></div>
+      <div class="card win"><div class="tag">Lo que mide EMMA</div><div class="big serif">Autonomía ↓</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Lee <b>sin</b> el apoyo</li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>El andamio se <b>retira</b></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>«Ya no me necesitas»</li>
+        </ul></div>
+    </div>
+  </section>
+
+  <!-- 2 · kappa -->
+  <section class="blk">
+    <p class="lab">2 · La métrica</p>
+    <h2 class="serif">κ — el número que distingue<br><em>amplificar</em> de <span class="j">atrofiar</span>.</h2>
+    <p class="p">Usar una herramienta puede hacerte <b>más capaz</b> o <b>más dependiente</b>. Nadie lo medía. El coeficiente de acoplamiento <b>κ</b> es la primera métrica que separa las dos — y está demostrada matemáticamente.</p>
+    <div class="kappa">
+      <div class="glyph serif">κ</div>
+      <div class="kdiag">
+        <div class="formula">κ = I(H ; A) / H(H, A)</div>
+        <div class="arrows">
+          <div class="arr up"><div class="t">Amplía ↑</div><div class="d">queda capacidad cuando el apoyo se va</div></div>
+          <div class="arr dn"><div class="t">Sustituye ↓</div><div class="d">la persona se vuelve dependiente</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · la IA que se retira -->
+  <section class="blk">
+    <p class="lab">3 · Pedagogía negativa</p>
+    <h2 class="serif">La IA que <em>se retira.</em></h2>
+    <p class="p">Casi toda la IA educativa añade: más contenido, más ayuda, más pantalla. EMMA hace lo contrario — <b>quita el apoyo</b> en cuanto el niño puede solo. Está diseñada para volverse <b>innecesaria</b>.</p>
+    <div class="stages">
+      <div class="stg"><b>Puesto</b><span>sostiene todo</span></div><span class="ar">→</span>
+      <div class="stg"><b>Parcial</b><span>solo lo crítico</span></div><span class="ar">→</span>
+      <div class="stg"><b>Retirado</b><span>casi sin ayuda</span></div><span class="ar">→</span>
+      <div class="stg on"><b>Autónomo</b><span>lee solo</span></div>
+    </div>
+    <p class="pull serif">«No se fabrica. Se cultiva.»</p>
+  </section>
+
+  <!-- 4 · cero nube, tu cultura -->
+  <section class="blk">
+    <p class="lab">4 · Soberanía</p>
+    <h2 class="serif">Cero nube.<br>Desde tu <span class="j">cultura.</span></h2>
+    <p class="p">Funciona en la tablet que ya está en el cajón, <b>sin internet</b>, y en la <b>lengua del niño</b> — náhuatl, zapoteco, español. Nada sale del dispositivo. La privacidad no es una promesa: es la <b>arquitectura</b>.</p>
+    <div class="ceros">
+      <div class="cero"><b>Cero nube</b><span>sin internet</span></div>
+      <div class="cero"><b>Cero cuenta</b><span>sin identidad</span></div>
+      <div class="cero"><b>Cero datos fuera</b><span>nada sale</span></div>
+      <div class="cero"><b>Cero modelo oculto</b><span>clasifica, no genera</span></div>
+    </div>
+    <div class="badges"><span class="badge">offline de verdad</span><span class="badge">en tu lengua</span><span class="badge">en tablets de 3 GB</span></div>
+  </section>
+
+  <!-- cierre -->
+  <section class="close">
+    <div class="big serif">Mide lo que importa:<br><em>que dejes de necesitarla.</em></div>
+    <div class="trio"><span>Mide autonomía</span><span>Se retira</span><span>Desde tu cultura</span></div>
+    <p class="p" style="max-width:52ch;margin-left:auto;margin-right:auto;text-align:center">Instrumento de <b>medida</b>, no prueba de eficacia. κ está demostrada matemáticamente; la validación causal llega con el experimento preregistrado.</p>
+    <div class="cta">
+      <a class="btn primary" href="tiempo-autonomia.html">Ver el impacto <span>→</span></a>
+      <a class="btn ghost" href="./">Volver a la web</a>
+    </div>
+  </section>
+
+  <p class="foot">EMMA · <b>Proyecto Guelaguetza</b> — Diego Elvira Vásquez · Cátedra de Inteligencia Extendida · Hack4Edu 2026</p>
+</div>
+</body></html>

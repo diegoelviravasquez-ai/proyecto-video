@@ -35,7 +35,7 @@
   video{width:100%;display:block;aspect-ratio:16/9;background:#000}
   /* launcher / controller */
   .controller{margin:30px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:12px;
-    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;box-shadow:0 1px 2px rgba(36,31,26,.04),0 20px 50px -30px rgba(36,31,26,.4)}
+    display:grid;grid-template-columns:repeat(5,1fr);gap:8px;box-shadow:0 1px 2px rgba(36,31,26,.04),0 20px 50px -30px rgba(36,31,26,.4)}
   .nav{display:flex;flex-direction:column;align-items:center;gap:9px;padding:20px 10px;border-radius:17px;text-decoration:none;color:var(--ink);
     background:transparent;border:0;cursor:pointer;font:inherit;transition:background .14s ease,transform .1s ease}
   .nav:hover{background:var(--paper2)} .nav:active{transform:translateY(1px)}
@@ -60,7 +60,7 @@
   .doc .n{font-family:Fraunces,Georgia,serif;font-size:19px;color:var(--clay);font-weight:500;flex:none;width:26px}
   .doc .m{flex:1;min-width:0} .doc .m .tt{font-family:Fraunces,Georgia,serif;font-size:18px;font-weight:460;line-height:1.15}
   .doc .m .dd{font-size:12.5px;color:var(--faint);margin-top:3px} .doc .arw{color:var(--faint);font-size:18px}
-  .qrs{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .qrs{margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
   .qrcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 16px 18px;text-align:center;box-shadow:0 1px 1px rgba(36,31,26,.04),0 10px 22px -16px rgba(36,31,26,.3)}
   .qrcard img{width:100%;max-width:156px;background:#fff;border-radius:10px;display:block;margin:0 auto 10px}
   .qrcard .qt{font:600 14px Inter} .qrcard .qs{font-size:11.5px;color:var(--faint);margin-top:2px}
@@ -127,6 +127,9 @@
       <a class="nav a" href="https://diegoelviravasquez-ai.github.io/EMMA_app_real/" target="_blank" rel="noopener">
         <span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
         <span class="t">La app</span><span class="s">pruébala</span></a>
+      <a class="nav a" href="innovacion.html">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-.7.6-1 1-1 2.5H9c0-1.5-.3-1.9-1-2.5A6 6 0 0 1 12 3z"/></svg></span>
+        <span class="t">Innovación</span><span class="s">qué la hace radical</span></a>
       <a class="nav" href="deck_narrado.html">
         <span class="ic"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
         <span class="t">Deck narrado</span><span class="s">con voz</span></a>
@@ -142,6 +145,9 @@
       <a class="nav" href="dossier/05_anexo_de_evidencias.pdf" target="_blank" rel="noopener">
         <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
         <span class="t">Anexo</span><span class="s">IP y premios</span></a>
+      <a class="nav" href="#qr">
+        <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 21v-3M17 21h.01M21 14h.01"/></svg></span>
+        <span class="t">QR</span><span class="s">escanéalos</span></a>
       <button class="nav" type="button" id="openCop2">
         <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
         <span class="t">Copiloto</span><span class="s">pregunta</span></button>
@@ -174,12 +180,13 @@
     </section>
 
     <!-- QR para escanear desde la pantalla -->
-    <section class="section">
+    <section class="section" id="qr">
       <p class="seclabel">Escanéalos desde la pantalla</p>
       <h2 class="sectitle serif">Llévatelo en el <em>móvil.</em></h2>
       <div class="qrs">
         <div class="qrcard"><img src="qr/web.png" alt="QR a la web del proyecto"><div class="qt">La web</div><div class="qs">todo el proyecto</div></div>
         <div class="qrcard"><img src="qr/app.png" alt="QR a la app EMMA"><div class="qt">La app EMMA</div><div class="qs">pruébala</div></div>
+        <div class="qrcard"><img src="qr/innovacion.png" alt="QR a la innovación radical"><div class="qt">Innovación</div><div class="qs">qué la hace radical</div></div>
         <div class="qrcard"><img src="qr/deck.png" alt="QR al deck narrado"><div class="qt">Deck narrado</div><div class="qs">con voz</div></div>
         <div class="qrcard"><img src="qr/variable.png" alt="QR a la variable, el impacto"><div class="qt">La variable</div><div class="qs">el impacto</div></div>
       </div>

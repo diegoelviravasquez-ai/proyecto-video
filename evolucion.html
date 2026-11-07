@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Evolución</title>
+<meta name="description" content="Dos años de evolución de EMMA/SAC: de UBUN.IA a un instrumento de medida, con diagramas del método y respaldo científico.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#faf7f2;--paper2:#f2ebe0;--surface:#fff;--ink:#241f1a;--soft:#574f45;--faint:#8a8075;
+    --line:rgba(60,40,20,.12);--clay:#c0562a;--jade:#1f7a6b;--ochre:#c69a45;
+    --jade-soft:rgba(31,122,107,.1);--clay-soft:rgba(192,86,42,.1);--ochre-soft:rgba(198,154,69,.14)}
+  @media(prefers-color-scheme:dark){:root{--paper:#16120f;--paper2:#0e0c0a;--surface:#1d1a16;--ink:#f0e7d9;--soft:#cbc1b4;--faint:#9c9284;--line:rgba(255,255,255,.12);--clay:#de7040;--jade:#46c4aa;--ochre:#e0a53f;--jade-soft:rgba(70,196,170,.14);--clay-soft:rgba(222,112,64,.14);--ochre-soft:rgba(224,165,63,.16)}}
+  *{box-sizing:border-box;margin:0} html{scroll-behavior:smooth}
+  body{font-family:Inter,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;
+    background:radial-gradient(60% 34% at 12% 0,rgba(198,154,69,.16),transparent 70%),radial-gradient(55% 40% at 98% 100%,rgba(192,86,42,.1),transparent 70%),var(--paper);
+    padding-left:max(18px,env(safe-area-inset-left,0));padding-right:max(18px,env(safe-area-inset-right,0))}
+  .serif{font-family:Fraunces,Georgia,serif}
+  .wrap{max-width:940px;margin:0 auto;padding:40px 0 90px}
+  .back{display:inline-flex;align-items:center;gap:8px;font:600 13px Inter;color:var(--soft);text-decoration:none;margin-bottom:26px}
+  .back:hover{color:var(--clay)}
+  .mark{display:flex;align-items:center;gap:10px}
+  .mark b{font:600 11px Inter;letter-spacing:.22em;text-transform:uppercase;color:rgba(128,118,105,.9)}
+  .mark .sep{width:1px;height:12px;background:var(--line)} .mark span{font-size:11px;color:var(--faint)}
+  .kick{font:700 12px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin:28px 0 14px}
+  h1{font-size:clamp(42px,9vw,82px);line-height:.96;letter-spacing:-.035em;font-weight:360}
+  h1 em{font-style:italic;color:var(--clay)}
+  .lede{font-size:clamp(18px,2.6vw,23px);line-height:1.45;color:var(--soft);max-width:34ch;margin:22px 0 0;font-weight:300}
+  .lede b{color:var(--ink);font-weight:600}
+  .blk{margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
+  .lab{font:700 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:8px}
+  .blk h2{font-size:clamp(27px,4.2vw,40px);line-height:1.04;letter-spacing:-.02em;font-weight:380}
+  .blk h2 em{font-style:italic;color:var(--clay)}
+  .blk .sub{font-size:16px;line-height:1.55;color:var(--soft);max-width:60ch;margin:14px 0 0;font-weight:300}
+
+  /* timeline */
+  .tl{margin-top:36px;position:relative;padding-left:30px}
+  .tl::before{content:"";position:absolute;left:9px;top:6px;bottom:40px;width:2px;
+    background:linear-gradient(var(--jade),var(--clay) 72%,var(--line) 72%,var(--line))}
+  .ev{position:relative;padding:0 0 30px}
+  .ev::before{content:"";position:absolute;left:-26px;top:3px;width:16px;height:16px;border-radius:50%;
+    background:var(--surface);border:3px solid var(--clay);box-shadow:0 0 0 4px var(--paper)}
+  .ev.jade::before{border-color:var(--jade)} .ev.ochre::before{border-color:var(--ochre)}
+  .ev.fut::before{background:var(--paper);border-style:dashed;border-color:var(--faint)}
+  .ev .yr{font:700 12px Inter;letter-spacing:.08em;color:var(--clay)}
+  .ev.jade .yr{color:var(--jade)} .ev.ochre .yr{color:var(--ochre)} .ev.fut .yr{color:var(--faint)}
+  .ev .h{font-family:Fraunces,Georgia,serif;font-size:21px;font-weight:500;margin:3px 0 4px;letter-spacing:-.01em}
+  .ev .d{font-size:14.5px;line-height:1.5;color:var(--soft);max-width:62ch}
+  .ev .tag{display:inline-block;margin-top:8px;font:600 11px Inter;letter-spacing:.04em;padding:4px 11px;border-radius:999px;background:var(--ochre-soft);color:var(--ochre)}
+  .ev.fut .d{color:var(--faint)}
+
+  /* diagram cards */
+  .dgrid{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .dcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px;
+    box-shadow:0 1px 1px rgba(36,31,26,.04),0 14px 30px -22px rgba(36,31,26,.3)}
+  .dcard.full{grid-column:1/-1}
+  .dcard .dt{font-family:Fraunces,Georgia,serif;font-size:18px;font-weight:500;margin-bottom:3px}
+  .dcard .ds{font-size:13px;color:var(--soft);margin-bottom:16px;line-height:1.5}
+  .dcard svg{display:block;width:100%;height:auto;overflow:visible}
+  .dcard .cap{font-size:12px;color:var(--faint);margin-top:14px;line-height:1.5;font-style:italic}
+  text{font-family:Inter,sans-serif}
+
+  /* science cards */
+  .sgrid{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .sci{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 22px;
+    box-shadow:0 1px 1px rgba(36,31,26,.04),0 12px 26px -20px rgba(36,31,26,.3)}
+  .sci .au{font-family:Fraunces,Georgia,serif;font-size:17px;font-weight:500;letter-spacing:-.01em}
+  .sci .vn{font:600 11px Inter;letter-spacing:.04em;color:var(--jade);margin-top:3px;text-transform:uppercase}
+  .sci .wh{font-size:14px;line-height:1.5;color:var(--soft);margin-top:10px}
+  .sci .wh b{color:var(--ink);font-weight:600}
+
+  /* claim blocks (respaldo por afirmación) */
+  .claim{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 24px;
+    box-shadow:0 1px 1px rgba(36,31,26,.04),0 12px 26px -20px rgba(36,31,26,.3)}
+  .claim .ch{display:flex;gap:16px;align-items:flex-start}
+  .claim .cn{flex:none;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--clay-soft);color:var(--clay);font:600 15px Fraunces,serif}
+  .claim.j .cn{background:var(--jade-soft);color:var(--jade)} .claim.o .cn{background:var(--ochre-soft);color:var(--ochre)}
+  .claim .ct{font-family:Fraunces,Georgia,serif;font-size:19px;font-weight:500;letter-spacing:-.01em;line-height:1.2}
+  .claim .cl{font-size:14px;line-height:1.5;color:var(--soft);margin-top:5px;max-width:64ch}
+  .claim .cl b{color:var(--ink);font-weight:600}
+  .refs{margin:16px 0 0 54px;display:flex;flex-direction:column;gap:8px}
+  .ref{font-size:13.5px;line-height:1.5;color:var(--soft);padding-left:14px;border-left:2px solid var(--line)}
+  .ref b{color:var(--ink);font-weight:600} .ref i{font-style:italic;color:var(--faint)}
+  @media(max-width:620px){.refs{margin-left:0}}
+  /* evidence state */
+  .ev-state{margin-top:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+  .est{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .est .q{font-family:Fraunces,Georgia,serif;font-size:16px;font-weight:500}
+  .est .bar{height:6px;border-radius:999px;background:var(--line);margin:12px 0 8px;overflow:hidden}
+  .est .bar i{display:block;height:100%;border-radius:999px;background:var(--jade)}
+  .est .st{font-size:12.5px;color:var(--soft);line-height:1.45}
+  .est.part .bar i{background:var(--ochre)} .est.todo .bar i{background:var(--clay)}
+
+  .foot{margin-top:70px;padding-top:30px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  .foot .note{font-size:12.5px;color:var(--faint);max-width:52ch;line-height:1.5}
+  .lk{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font:600 14px Inter;text-decoration:none}
+  .lk.primary{background:var(--ink);color:var(--paper)} .lk.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  @media(max-width:620px){.dgrid,.sgrid{grid-template-columns:1fr}.ev-state{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← Volver al proyecto</a>
+  <div class="mark"><b>EMMA</b><span class="sep"></span><span>Proyecto Guelaguetza</span></div>
+
+  <p class="kick">La evolución · 2024 → 2028</p>
+  <h1 class="serif">Dos años<br>de <em>evolución.</em></h1>
+  <p class="lede">De una idea premiada a un <b>instrumento de medida honesto</b>. El camino, el método y la ciencia que lo sostiene — a la vista.</p>
+
+  <!-- TIMELINE -->
+  <section class="blk">
+    <p class="lab">Lo recorrido · lo que viene</p>
+    <h2 class="serif">La <em>línea</em> del tiempo.</h2>
+    <p class="sub">No empezamos de cero. Cada etapa corrige a la anterior: el giro honesto fue dejar de prometer un motor que lo genera todo, para construir un instrumento que mide lo que de verdad pasa.</p>
+    <div class="tl">
+      <div class="ev jade">
+        <div class="yr">2024 – 2025</div>
+        <div class="h">UBUN.IA</div>
+        <div class="d">Un motor socrático con autorregulación emocional. La primera forma del proyecto: una IA que no da respuestas, pregunta. Aquí nace la intuición central — la máquina acompaña, no sustituye.</div>
+        <span class="tag">2.º Premio Sénior · Hack4Edu 2025</span>
+      </div>
+      <div class="ev ochre">
+        <div class="yr">Sep 2025 – Feb 2026</div>
+        <div class="h">Cátedra Telefónica · ProFuturo (UPSA)</div>
+        <div class="d">Investigador y formador en entorno vulnerable. Nace la línea de <b>Inteligencia Extendida</b> y la formalización matemática del coeficiente de acoplamiento <span class="serif" style="font-style:italic">κ</span>: medir no al humano ni a la herramienta, sino el acoplamiento entre ambos.</div>
+      </div>
+      <div class="ev">
+        <div class="yr">2026 · el giro honesto</div>
+        <div class="h">Nace el SAC y EMMA</div>
+        <div class="d">De «un motor que genera» a «un instrumento que mide». El <b>Sistema de Aprendizaje Circunstancial</b> (SAC) escucha, entiende y devuelve; <b>EMMA</b> lo hace con la voz, en local y sin nube. κ queda demostrado matemáticamente. Artículo en Springer LNCS (DITTET 2026).</div>
+        <span class="tag">4 ceros · el motor clasifica, no genera</span>
+      </div>
+      <div class="ev">
+        <div class="yr">Nov 2026 · hoy</div>
+        <div class="h">Final Hack4Edu · EMMA app real</div>
+        <div class="d">Una app que funciona: análisis acústico local de la lectura, piel cultural co-diseñada en Oaxaca, comprensión demostrable sin calificar ni diagnosticar. El niño habla; EMMA refleja su voz y parte de ahí.</div>
+      </div>
+      <div class="ev fut">
+        <div class="yr">2027 – 2031 · horizonte</div>
+        <div class="h">Doctorado FPU · validación empírica</div>
+        <div class="d">Primera validación empírica de κ / HACC en plataformas reales (diseño con-sin apoyo, prosodia como detector). Integración como instrumento de medida del proyecto HERMES (PID2026). Despliegue vía ProFuturo.</div>
+        <span class="tag" style="background:var(--clay-soft);color:var(--clay)">lo que falta por demostrar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIAGRAMS -->
+  <section class="blk">
+    <p class="lab">Cómo funciona</p>
+    <h2 class="serif">El método, en <em>diagramas.</em></h2>
+    <p class="sub">Tres piezas encajadas: el bucle de EMMA, las capas del SAC con su meta-capa κ, y la brecha institucional que el proyecto viene a cerrar.</p>
+
+    <div class="dgrid">
+      <!-- loop -->
+      <div class="dcard">
+        <div class="dt">El bucle de EMMA</div>
+        <div class="ds">Escucha → entiende → devuelve. Y se retira cuando el niño ya puede.</div>
+        <svg viewBox="0 0 320 170" role="img" aria-label="Bucle escucha, entiende, devuelve">
+          <defs><marker id="ar" markerWidth="7" markerHeight="7" refX="5.5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor"/></marker></defs>
+          <g fill="none" stroke="currentColor" stroke-width="1.6" opacity=".5">
+            <path d="M70 46 A70 70 0 0 1 250 46" marker-end="url(#ar)"/>
+            <path d="M262 70 A70 70 0 0 1 180 150" marker-end="url(#ar)"/>
+            <path d="M140 150 A70 70 0 0 1 58 70" marker-end="url(#ar)"/>
+          </g>
+          <g text-anchor="middle">
+            <circle cx="60" cy="58" r="30" fill="var(--jade-soft)"/><text x="60" y="54" font-size="12.5" font-weight="600" fill="var(--jade)">escucha</text><text x="60" y="68" font-size="9" fill="var(--soft)">la voz</text>
+            <circle cx="260" cy="58" r="30" fill="var(--ochre-soft)"/><text x="260" y="54" font-size="12.5" font-weight="600" fill="var(--ochre)">entiende</text><text x="260" y="68" font-size="9" fill="var(--soft)">clasifica κ</text>
+            <circle cx="160" cy="138" r="30" fill="var(--clay-soft)"/><text x="160" y="134" font-size="12.5" font-weight="600" fill="var(--clay)">devuelve</text><text x="160" y="148" font-size="9" fill="var(--soft)">el andamio</text>
+          </g>
+        </svg>
+        <div class="cap">Pedagogía negativa: no da la respuesta, da la tarea para superar la barrera.</div>
+      </div>
+
+      <!-- SAC layers -->
+      <div class="dcard">
+        <div class="dt">Las capas del SAC</div>
+        <div class="ds">Leer · comprender · pensar, con una meta-capa que mide el acoplamiento.</div>
+        <svg viewBox="0 0 320 170" role="img" aria-label="Capas del SAC: leer, comprender, pensar y meta-capa kappa">
+          <g>
+            <rect x="24" y="118" width="210" height="34" rx="9" fill="var(--jade-soft)"/><text x="38" y="139" font-size="13" font-weight="600" fill="var(--jade)">Leer</text>
+            <rect x="46" y="76" width="210" height="34" rx="9" fill="var(--ochre-soft)"/><text x="60" y="97" font-size="13" font-weight="600" fill="var(--ochre)">Comprender</text>
+            <rect x="68" y="34" width="210" height="34" rx="9" fill="var(--clay-soft)"/><text x="82" y="55" font-size="13" font-weight="600" fill="var(--clay)">Pensar</text>
+          </g>
+          <g>
+            <circle cx="286" cy="51" r="26" fill="none" stroke="var(--jade)" stroke-width="2.4" stroke-dasharray="118 46" transform="rotate(-90 286 51)"/>
+            <text x="286" y="48" font-size="11" font-style="italic" font-family="Fraunces,serif" text-anchor="middle" fill="var(--soft)">κ</text>
+            <text x="286" y="62" font-size="12" font-weight="600" text-anchor="middle" fill="var(--ink)">mide</text>
+          </g>
+        </svg>
+        <div class="cap">κ detecta el régimen de acoplamiento en tiempo real: ¿amplifica o sustituye?</div>
+      </div>
+
+      <!-- desacoplamiento -->
+      <div class="dcard full">
+        <div class="dt">La innovación: cerrar el desacoplamiento institucional</div>
+        <div class="ds">Toda la edtech ataca el <b>contenido</b> (qué dar). Nosotros partimos de lo que el niño <b>ya sabe y trae</b> — la otra mitad de Ausubel — y re-acoplamos lo que la institución había separado.</div>
+        <svg viewBox="0 0 640 150" role="img" aria-label="De estructura y aula desacopladas a re-acopladas por kappa">
+          <defs><marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="currentColor"/></marker></defs>
+          <!-- left: desacoplado -->
+          <text x="150" y="20" font-size="11" font-weight="700" letter-spacing="1" text-anchor="middle" fill="var(--faint)">ANTES · DESACOPLADO</text>
+          <rect x="40" y="36" width="100" height="40" rx="9" fill="var(--surface)" stroke="var(--line)"/><text x="90" y="60" font-size="11.5" text-anchor="middle" fill="var(--soft)">estructura</text>
+          <rect x="160" y="88" width="100" height="40" rx="9" fill="var(--surface)" stroke="var(--line)"/><text x="210" y="112" font-size="11.5" text-anchor="middle" fill="var(--soft)">aula real</text>
+          <path d="M126 76 L176 92" stroke="var(--clay)" stroke-width="1.6" stroke-dasharray="4 4" opacity=".7"/>
+          <text x="150" y="150" font-size="10.5" text-anchor="middle" fill="var(--clay)">la ceremonia no toca el aprendizaje</text>
+          <!-- arrow -->
+          <line x1="300" y1="82" x2="352" y2="82" stroke="currentColor" stroke-width="1.8" marker-end="url(#ar2)" opacity=".6"/>
+          <text x="326" y="70" font-size="12" font-style="italic" font-family="Fraunces,serif" text-anchor="middle" fill="var(--jade)">κ</text>
+          <!-- right: re-acoplado -->
+          <text x="500" y="20" font-size="11" font-weight="700" letter-spacing="1" text-anchor="middle" fill="var(--jade)">CON EMMA · RE-ACOPLADO</text>
+          <rect x="450" y="56" width="100" height="40" rx="9" fill="var(--jade-soft)" stroke="none"/><text x="500" y="80" font-size="11.5" text-anchor="middle" fill="var(--jade)">estructura</text>
+          <rect x="560" y="56" width="70" height="40" rx="9" fill="var(--clay-soft)" stroke="none"/><text x="595" y="80" font-size="11.5" text-anchor="middle" fill="var(--clay)">aula</text>
+          <line x1="552" y1="76" x2="558" y2="76" stroke="var(--jade)" stroke-width="2.4"/>
+          <text x="500" y="124" font-size="10.5" text-anchor="middle" fill="var(--soft)">la medida las vincula: evidencia, no ceremonia</text>
+        </svg>
+        <div class="cap">Meyer &amp; Rowan (1977): las instituciones despliegan estructura formal que queda desacoplada del núcleo técnico. κ es, aquí, el instrumento de re-acoplamiento.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCIENCE -->
+  <section class="blk">
+    <p class="lab">Respaldo científico</p>
+    <h2 class="serif">No es una <em>corazonada.</em></h2>
+    <p class="sub">Cada pieza del proyecto se apoya en literatura revisada por pares. Cuatro afirmaciones, cuatro cuerpos de evidencia.</p>
+
+    <div class="claim o">
+      <div class="ch"><span class="cn">01</span><div>
+        <div class="ct">El desacoplamiento institucional es real</div>
+        <div class="cl">La estructura formal que una institución despliega puede quedar <b>separada de lo que de verdad ocurre</b> en el aula. El alcance de un programa no garantiza su impacto; medir la comprensión vuelve a acoplar ambas.</div></div></div>
+      <div class="refs">
+        <div class="ref"><b>Meyer &amp; Rowan</b> · <i>American Journal of Sociology, 1977</i> — organizaciones institucionalizadas: la estructura formal como «mito y ceremonia» desacoplada del núcleo técnico.</div>
+        <div class="ref"><b>Weick</b> · <i>Administrative Science Quarterly, 1976</i> — las organizaciones educativas como «sistemas débilmente acoplados».</div>
+        <div class="ref"><b>DiMaggio &amp; Powell</b> · <i>American Sociological Review, 1983</i> — isomorfismo institucional: por qué se adopta la forma sin el fondo.</div>
+      </div>
+    </div>
+
+    <div class="claim j">
+      <div class="ch"><span class="cn">02</span><div>
+        <div class="ct">Así funciona el SAC: partir de lo que ya saben y dar la tarea, no la respuesta</div>
+        <div class="cl">Aprender exige <b>significatividad psicológica</b> (lo que el alumno ya sabe y su disposición), andamiaje en su zona de desarrollo y una dificultad productiva. La «pedagogía negativa» del SAC es exactamente eso: localiza la barrera y devuelve la tarea.</div></div></div>
+      <div class="refs">
+        <div class="ref"><b>Ausubel</b> · <i>Educational Psychology: A Cognitive View, 1968</i> — el aprendizaje significativo depende de lo que el aprendiz ya sabe; la otra mitad que la edtech del contenido olvida.</div>
+        <div class="ref"><b>Vygotsky</b> · <i>Mind in Society, 1978</i> — zona de desarrollo próximo: se aprende en el margen entre lo que se hace solo y con ayuda.</div>
+        <div class="ref"><b>Wood, Bruner &amp; Ross</b> · <i>J. Child Psychology &amp; Psychiatry, 1976</i> — «scaffolding»: el apoyo que se retira a medida que el aprendiz puede.</div>
+        <div class="ref"><b>Kapur</b> · <i>Cognition and Instruction, 2008</i> — «productive failure»: devolver la dificultad, no la solución, produce aprendizaje más profundo.</div>
+      </div>
+    </div>
+
+    <div class="claim">
+      <div class="ch"><span class="cn">03</span><div>
+        <div class="ct">La prosodia y la huella de lectura miden comprensión</div>
+        <div class="cl">Cómo suena un niño al leer en voz alta —su ritmo, sus pausas, su melodía— es un <b>índice validado de comprensión lectora</b>, medible desde la señal acústica. Es el suelo de la huella de voz de EMMA: nPVI-V (ritmo), %V (vocales), Δf0 (melodía).</div></div></div>
+      <div class="refs">
+        <div class="ref"><b>Benjamin &amp; Schwanenflugel</b> · <i>Reading Research Quarterly, 2010</i> — la prosodia de la lectura oral predice la comprensión en lectores jóvenes.</div>
+        <div class="ref"><b>Schwanenflugel et al.</b> · <i>J. Educational Psychology, 2004</i> — rasgos prosódicos (contorno de F0, pausas) distinguen al lector fluido del que no lo es.</div>
+        <div class="ref"><b>Miller &amp; Schwanenflugel</b> · <i>Reading Research Quarterly, 2008</i> — el desarrollo de la prosodia lectora predice la comprensión posterior.</div>
+        <div class="ref"><b>Grabe &amp; Low</b> · <i>Papers in Laboratory Phonology, 2002</i> — el nPVI: la métrica de variabilidad rítmica que EMMA toma de la fonética.</div>
+      </div>
+    </div>
+
+    <div class="claim o">
+      <div class="ch"><span class="cn">04</span><div>
+        <div class="ct">La IA mejora la comprensión solo si el acoplamiento es bueno</div>
+        <div class="cl">Juntar a un aprendiz con una IA <b>no amplifica su capacidad por defecto</b>: puede sustituirla. Lo que cuenta es la capacidad que permanece al retirar el apoyo. Por eso EMMA mide el acoplamiento (κ) en lugar de presuponerlo.</div></div></div>
+      <div class="refs">
+        <div class="ref"><b>Vaccaro, Sunwoo &amp; Malone</b> · <i>Nature Human Behaviour, 2024</i> — meta-análisis (&gt;100 estudios): la combinación humano-IA no supera de media al mejor de los dos.</div>
+        <div class="ref"><b>Salomon, Perkins &amp; Globerson</b> · <i>Educational Researcher, 1991</i> — efectos «con» vs. «de» la tecnología: importa lo que queda al retirar la herramienta.</div>
+        <div class="ref"><b>Risko &amp; Gilbert</b> · <i>Trends in Cognitive Sciences, 2016</i> — descarga cognitiva: externalizar erosiona la capacidad propia mientras sube la confianza.</div>
+        <div class="ref"><b>Buçinca, Malaya &amp; Gajos</b> · <i>ACM CSCW, 2021</i> — confianza apropiada y «cognitive forcing functions» para reducir la sobre-dependencia.</div>
+        <div class="ref"><b>Clark &amp; Chalmers</b> · <i>Analysis, 1998</i> — la mente extendida: marco ontológico del acoplamiento humano-herramienta.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVIDENCE STATE -->
+  <section class="blk">
+    <p class="lab">Honestidad epistémica</p>
+    <h2 class="serif">Qué está <em>probado</em> — y qué no.</h2>
+    <p class="sub">La fortaleza del proyecto es no prometer el milagro. Esto es lo que ya se sostiene y lo que la tesis viene a demostrar.</p>
+    <div class="ev-state">
+      <div class="est"><div class="q">κ, formalmente</div><div class="bar"><i style="width:100%"></i></div><div class="st">Demostrado <b>matemáticamente</b>. El coeficiente de acoplamiento está definido y es coherente.</div></div>
+      <div class="est part"><div class="q">Verificador prosódico</div><div class="bar"><i style="width:55%"></i></div><div class="st">Probado <b>en banco</b> (nPVI-V, %V, Δf0). Falta validarlo en aula real.</div></div>
+      <div class="est todo"><div class="q">κ, empíricamente</div><div class="bar"><i style="width:22%"></i></div><div class="st">Sin validar aún. Es, exactamente, lo que produce la tesis doctoral (2027–2031).</div></div>
+    </div>
+  </section>
+
+  <div class="foot">
+    <p class="note">El motor clasifica, no genera · «elijo, no invento» · offline, 4 ceros · κ no es prueba de eficacia hasta su validación empírica.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="lk ghost" href="origen.html">Origen ←</a>
+      <a class="lk ghost" href="innovacion.html">Innovación</a>
+      <a class="lk primary" href="https://diegoelviravasquez-ai.github.io/EMMA_app_real/" target="_blank" rel="noopener">Probar EMMA →</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>La innovación radical</title>
-<meta name="description" content="Por qué EMMA es radicalmente distinta: mide autonomía, no engagement.">
+<meta name="description" content="La innovación de EMMA: empieza por el niño, no por el contenido. Escucha, entiende y re-acopla la escuela.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -21,33 +21,47 @@
   .back{display:inline-flex;align-items:center;gap:8px;font:600 13px Inter;color:var(--soft);text-decoration:none;margin-bottom:26px}
   .mark{display:flex;align-items:center;gap:10px}
   .mark b{font:600 11px Inter;letter-spacing:.22em;text-transform:uppercase;color:rgba(128,118,105,.9)}
-  /* hero */
   .kick{font:700 12px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin:30px 0 14px}
   h1{font-size:clamp(42px,9vw,86px);line-height:.96;letter-spacing:-.035em;font-weight:360}
   h1 em{font-style:italic;color:var(--clay)}
-  .lede{font-size:clamp(19px,3vw,27px);line-height:1.35;color:var(--soft);max-width:22ch;margin:22px 0 0;font-weight:300}
+  .lede{font-size:clamp(19px,3vw,27px);line-height:1.35;color:var(--soft);max-width:24ch;margin:22px 0 0;font-weight:300}
   .lede b{color:var(--ink);font-weight:600}
-  /* bloque */
   .blk{margin-top:64px;padding-top:40px;border-top:1px solid var(--line)}
   .lab{font:700 12px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-bottom:14px}
   h2{font-size:clamp(30px,6vw,52px);line-height:1.02;letter-spacing:-.025em;font-weight:360;text-wrap:balance}
   h2 em{font-style:italic;color:var(--clay)} h2 .j{color:var(--jade);font-style:italic}
   .p{font-size:clamp(16px,2.3vw,19px);line-height:1.55;color:var(--soft);max-width:60ch;margin-top:16px;font-weight:300}
   .p b{color:var(--ink);font-weight:600}
-  /* contraste */
-  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
-  @media(max-width:620px){.vs{grid-template-columns:1fr}}
-  .card{border-radius:22px;padding:26px 24px;border:1px solid var(--line);background:var(--surface)}
-  .card.mut{background:var(--paper2);opacity:.9}
-  .card .tag{font:700 11px Inter;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-  .card.mut .tag{color:var(--faint)} .card.win .tag{color:var(--jade)}
-  .card.win{border-color:var(--jade);background:var(--jade-soft)}
-  .card .big{font:360 clamp(28px,5vw,40px)/1 Fraunces,serif;letter-spacing:-.02em;margin-bottom:12px}
-  .card.win .big{color:var(--jade)}
-  .card ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-  .card li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:var(--soft);line-height:1.4}
-  .card li svg{width:17px;height:17px;flex:none;margin-top:1px;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-  .card.mut li svg{stroke:var(--faint)} .card.win li svg{stroke:var(--jade)}
+  /* pilares */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+  @media(max-width:640px){.pillars{grid-template-columns:1fr}}
+  .pil{border:1px solid var(--line);border-radius:18px;padding:20px;background:var(--surface)}
+  .pil.mut{background:var(--paper2);opacity:.9} .pil.on{border-color:var(--jade);background:var(--jade-soft)}
+  .pil .num{font:360 30px/1 Fraunces,serif;color:var(--faint)} .pil.on .num{color:var(--jade)}
+  .pil .pt{font:460 18px Fraunces,serif;margin:8px 0 6px} .pil .pd{font-size:13.5px;color:var(--soft);line-height:1.42}
+  .pil .ptag{display:inline-block;margin-top:13px;font:700 10px Inter;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
+  .pil.mut .ptag{background:rgba(138,128,117,.16);color:var(--faint)} .pil.on .ptag{background:var(--jade);color:#fff}
+  .note{font-size:14.5px;color:var(--soft);margin-top:16px;font-style:italic} .note b{color:var(--ink);font-style:normal;font-weight:600}
+  /* mecanismo */
+  .flow{display:flex;align-items:stretch;gap:8px;margin-top:26px;flex-wrap:wrap}
+  .step{flex:1;min-width:150px;border:1px solid var(--line);border-radius:16px;padding:18px;background:var(--surface)}
+  .step.hl{border-color:var(--jade);background:var(--jade-soft)}
+  .step .sn{font:700 10px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--clay)}
+  .step .st{font:460 21px Fraunces,serif;margin:6px 0 4px} .step.hl .st{color:var(--jade)}
+  .step .sd{font-size:13px;color:var(--soft);line-height:1.4}
+  .arrow{display:flex;align-items:center;color:var(--faint);font-size:22px;padding:0 2px}
+  @media(max-width:640px){.arrow{transform:rotate(90deg);justify-content:center;padding:4px 0}}
+  .pull{font-family:Fraunces,serif;font-style:italic;font-size:clamp(23px,5vw,34px);color:var(--clay);margin-top:26px;text-wrap:balance}
+  /* desacople */
+  .gap{display:flex;align-items:center;gap:0;margin-top:26px;flex-wrap:wrap}
+  .gbox{flex:1;min-width:150px;border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface)}
+  .gbox .bt{font:460 19px Fraunces,serif} .gbox .bd{font-size:13px;color:var(--faint);margin-top:4px}
+  .gvoid{flex:0 0 110px;text-align:center;padding:0 6px}
+  .gvoid .ln{border-top:2px dashed var(--clay);opacity:.55;margin-bottom:8px}
+  .gvoid .vt{font:700 10.5px Inter;letter-spacing:.06em;text-transform:uppercase;color:var(--clay);line-height:1.3}
+  @media(max-width:640px){.gvoid{flex:0 0 100%;padding:12px 0}.gvoid .ln{display:none}}
+  .recouple{margin-top:14px;background:var(--jade-soft);border:1px solid var(--jade);border-radius:16px;padding:16px 20px;font-size:15px;color:var(--ink);line-height:1.5}
+  .recouple b{color:var(--jade);font-weight:600}
   /* kappa */
   .kappa{display:flex;flex-wrap:wrap;align-items:center;gap:26px;margin-top:26px}
   .kappa .glyph{font:360 150px/1 Fraunces,serif;color:var(--clay)}
@@ -64,10 +78,9 @@
   .stg.on{border-color:var(--jade);background:var(--jade-soft)}
   .stg b{display:block;font:460 16px Fraunces,serif} .stg.on b{color:var(--jade)}
   .stg span{font-size:11.5px;color:var(--faint)} .ar{color:var(--faint);font-size:18px}
-  .pull{font-family:Fraunces,serif;font-style:italic;font-size:clamp(24px,5vw,36px);color:var(--clay);margin-top:26px;text-wrap:balance}
   /* ceros */
   .ceros{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}
-  @media(max-width:620px){.ceros{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.ceros{grid-template-columns:1fr 1fr}}
   .cero{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--surface);text-align:center}
   .cero b{display:block;font:460 16px Fraunces,serif;color:var(--jade)} .cero span{font-size:12px;color:var(--faint)}
   .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -93,64 +106,54 @@
 
   <p class="kick">Por qué EMMA es distinta</p>
   <h1 class="serif">La innovación <em>radical.</em></h1>
-  <p class="lede">Toda la edtech mide <b>cuánto usas la app.</b><br>EMMA mide <b>cuándo dejas de necesitarla.</b></p>
+  <p class="lede">Toda la edtech empieza por el <b>contenido.</b><br>EMMA empieza por el <b>niño</b> — escucha, entiende y devuelve.</p>
 
-  <!-- 1 · la inversión -->
+  <!-- 1 · el cambio de premisa -->
   <section class="blk">
     <p class="lab">1 · El cambio de premisa</p>
-    <h2 class="serif">Mide <span class="j">autonomía</span>,<br>no engagement.</h2>
-    <p class="p">La premisa de toda la edtech es la misma: <b>cuanto más uses la app, mejor</b>. EMMA parte de la premisa contraria — su éxito es que el niño <b>necesite menos la app</b>. Al cambiar la premisa, puede medir aprendizaje de verdad, no adicción.</p>
-    <div class="vs">
-      <div class="card mut"><div class="tag">Lo que mide la edtech</div><div class="big serif">Engagement ↑</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Más minutos en pantalla</li>
-          <li><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 7-8"/></svg>Rachas, puntos, notificaciones</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>«Vuelve mañana»</li>
-        </ul></div>
-      <div class="card win"><div class="tag">Lo que mide EMMA</div><div class="big serif">Autonomía ↓</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Lee <b>sin</b> el apoyo</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>El andamio se <b>retira</b></li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>«Ya no me necesitas»</li>
-        </ul></div>
+    <h2 class="serif">Empieza por el <span class="j">niño</span>,<br>no por el contenido.</h2>
+    <p class="p">Para que algo se aprenda de verdad (Ausubel) no basta con un buen contenido: hacen falta <b>tres</b> cosas. Toda la edtech trabaja solo la <b>primera</b> — qué material dar. EMMA arranca de las otras dos: de la persona. Por eso es <b>orgánico</b>.</p>
+    <div class="pillars">
+      <div class="pil mut"><div class="num">1</div><div class="pt serif">Significatividad lógica</div><div class="pd">¿El contenido tiene sentido en sí mismo?</div><span class="ptag">Lo que optimiza la edtech</span></div>
+      <div class="pil on"><div class="num">2</div><div class="pt serif">Significatividad psicológica</div><div class="pd">¿Conecta con lo que el niño <b>ya sabe</b>?</div><span class="ptag">Donde EMMA empieza</span></div>
+      <div class="pil on"><div class="num">3</div><div class="pt serif">Disposición · vínculo</div><div class="pd">¿<b>Quiere</b> aprenderlo? ¿Cómo llega hoy?</div><span class="ptag">Lo que EMMA cuida</span></div>
     </div>
+    <p class="note">La edtech reparte contenido potencialmente significativo. EMMA parte de <b>la persona</b> — de lo que sabe y de cómo está.</p>
   </section>
 
-  <!-- 2 · el cambio de paradigma -->
+  <!-- 2 · cómo se consigue -->
   <section class="blk">
-    <p class="lab">2 · El cambio de paradigma</p>
-    <h2 class="serif">De <em>transferir</em><br>a crear <span class="j">significatividad.</span></h2>
-    <p class="p">El modelo clásico <b>transfiere</b> contenido: se despliega, se transmite, el niño recibe y se mide si lo <b>reproduce</b>. EMMA cambia el eje — el aprendizaje arranca de la <b>circunstancia</b> del niño, en su lengua y su cultura, y se mide por <b>comprensión demostrable</b>, no por repetición. No basta con transferir: tiene que <b>significar</b> algo para él.</p>
-    <div class="vs">
-      <div class="card mut"><div class="tag">Paradigma clásico</div><div class="big serif">Transferencia</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M4 7h13M13 3l4 4-4 4"/></svg>Transmite contenido</li>
-          <li><svg viewBox="0 0 24 24"><path d="M12 3v12M8 11l4 4 4-4M5 20h14"/></svg>El niño recibe</li>
-          <li><svg viewBox="0 0 24 24"><path d="M8 6h11M8 12h11M8 18h11M4 6h.01M4 12h.01M4 18h.01"/></svg>Se mide por reproducción</li>
-          <li><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/></svg>«Desplegar la tablet»</li>
-        </ul></div>
-      <div class="card win"><div class="tag">Paradigma EMMA · SAC</div><div class="big serif">Significatividad</div>
-        <ul>
-          <li><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l3 2"/></svg>Arranca de su circunstancia</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>En su lengua y su cultura</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Comprensión demostrable</li>
-          <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>«Que le importe»</li>
-        </ul></div>
+    <p class="lab">2 · El cambio de paradigma — cómo se consigue</p>
+    <h2 class="serif">Escucha <em>antes</em><br>de enseñar.</h2>
+    <p class="p">En vez de empujar contenido, EMMA invierte el flujo: primero <b>escucha</b>, entiende <b>qué sabe</b> y cómo está, y solo entonces <b>devuelve</b> contenido adaptado a él. Esa es la clave del <b>SAC</b> — un dispositivo que escucha antes de dar.</p>
+    <div class="flow">
+      <div class="step hl"><div class="sn">01</div><div class="st serif">Escucha</div><div class="sd">su voz al leer — prosodia y ritmo, en el dispositivo</div></div>
+      <div class="arrow">→</div>
+      <div class="step hl"><div class="sn">02</div><div class="st serif">Entiende</div><div class="sd">qué sabe ya, dónde se rompe y con qué ánimo llega</div></div>
+      <div class="arrow">→</div>
+      <div class="step hl"><div class="sn">03</div><div class="st serif">Devuelve</div><div class="sd">contenido a su medida — su ritmo, su lengua, su cultura</div></div>
     </div>
-    <div class="badges" style="margin-top:16px">
-      <span class="badge" style="background:var(--jade-soft);color:var(--jade)">reformula</span>
-      <span class="badge" style="background:var(--jade-soft);color:var(--jade)">transfiere a un caso nuevo</span>
-      <span class="badge" style="background:var(--jade-soft);color:var(--jade)">objeta</span>
-      <span class="badge" style="background:var(--jade-soft);color:var(--jade)">conoce sus límites</span>
-    </div>
-    <p class="pull serif">«Aprender no es recibir. Es que algo cobre sentido.»</p>
+    <p class="note">↺ Y vuelve a empezar: cada lectura afina la siguiente. Todo <b>local</b>, con κ y prosodia — sin nube.</p>
   </section>
 
-  <!-- 3 · kappa -->
+  <!-- 3 · el desacoplamiento institucional -->
   <section class="blk">
-    <p class="lab">3 · La métrica</p>
+    <p class="lab">3 · Por qué es la innovación</p>
+    <h2 class="serif">Cierra el <span class="j">desacoplamiento</span> institucional.</h2>
+    <p class="p">El problema real no es falta de tablets ni de contenido. Es el <b>desacople</b> (Meyer &amp; Rowan, 1977): la institución <b>despliega</b> y el aula <b>no aprende</b>. Dar más contenido no lo cierra — lo agranda. EMMA <b>re-acopla</b> porque empieza por el niño: vuelve a unir lo que se enseña con lo que de verdad ocurre.</p>
+    <div class="gap">
+      <div class="gbox"><div class="bt">Se despliega</div><div class="bd">tablets · contenido · horas</div></div>
+      <div class="gvoid"><div class="ln"></div><div class="vt">el desacople<br>Meyer &amp; Rowan</div></div>
+      <div class="gbox"><div class="bt">Se aprende</div><div class="bd">comprensión real</div></div>
+    </div>
+    <div class="recouple"><b>EMMA re-acopla:</b> al empezar por lo que el niño sabe y cómo está, el aprendizaje vuelve a enganchar con el despliegue. La innovación no es más tecnología — es cerrar ese hueco.</div>
+  </section>
+
+  <!-- 4 · kappa -->
+  <section class="blk">
+    <p class="lab">4 · La métrica</p>
     <h2 class="serif">κ — el número que distingue<br><em>amplificar</em> de <span class="j">atrofiar</span>.</h2>
-    <p class="p">Usar una herramienta puede hacerte <b>más capaz</b> o <b>más dependiente</b>. Nadie lo medía. El coeficiente de acoplamiento <b>κ</b> es la primera métrica que separa las dos — y está demostrada matemáticamente.</p>
+    <p class="p">Y para saber si funciona, una sola pregunta: ¿el niño queda <b>más capaz</b> o <b>más dependiente</b>? El coeficiente de acoplamiento <b>κ</b> es la primera métrica que lo mide — mide <b>autonomía, no engagement</b>. Está demostrada matemáticamente.</p>
     <div class="kappa">
       <div class="glyph serif">κ</div>
       <div class="kdiag">
@@ -163,9 +166,9 @@
     </div>
   </section>
 
-  <!-- 3 · la IA que se retira -->
+  <!-- 5 · la IA que se retira -->
   <section class="blk">
-    <p class="lab">4 · Pedagogía negativa</p>
+    <p class="lab">5 · Pedagogía negativa</p>
     <h2 class="serif">La IA que <em>se retira.</em></h2>
     <p class="p">Casi toda la IA educativa añade: más contenido, más ayuda, más pantalla. EMMA hace lo contrario — <b>quita el apoyo</b> en cuanto el niño puede solo. Está diseñada para volverse <b>innecesaria</b>.</p>
     <div class="stages">
@@ -177,9 +180,9 @@
     <p class="pull serif">«No se fabrica. Se cultiva.»</p>
   </section>
 
-  <!-- 4 · cero nube, tu cultura -->
+  <!-- 6 · cero nube, tu cultura -->
   <section class="blk">
-    <p class="lab">5 · Soberanía</p>
+    <p class="lab">6 · Soberanía</p>
     <h2 class="serif">Cero nube.<br>Desde tu <span class="j">cultura.</span></h2>
     <p class="p">Funciona en la tablet que ya está en el cajón, <b>sin internet</b>, y en la <b>lengua del niño</b> — náhuatl, zapoteco, español. Nada sale del dispositivo. La privacidad no es una promesa: es la <b>arquitectura</b>.</p>
     <div class="ceros">
@@ -193,8 +196,8 @@
 
   <!-- cierre -->
   <section class="close">
-    <div class="big serif">Mide lo que importa:<br><em>que dejes de necesitarla.</em></div>
-    <div class="trio"><span>Mide autonomía</span><span>Se retira</span><span>Desde tu cultura</span></div>
+    <div class="big serif">Empieza por el niño.<br><em>Y re-acopla la escuela.</em></div>
+    <div class="trio"><span>Orgánico</span><span>Escucha y adapta</span><span>Cierra el desacople</span></div>
     <p class="p" style="max-width:52ch;margin-left:auto;margin-right:auto;text-align:center">Instrumento de <b>medida</b>, no prueba de eficacia. κ está demostrada matemáticamente; la validación causal llega con el experimento preregistrado.</p>
     <div class="cta">
       <a class="btn primary" href="tiempo-autonomia.html">Ver el impacto <span>→</span></a>
